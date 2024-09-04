@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 export default function About(){
     return(
@@ -33,6 +34,7 @@ export default function About(){
           <figure className="relative isolate mx-auto w-fit after:absolute after:left-0 after:top-0 after:-z-10 after:ml-[20px] after:mt-[20px] after:h-full after:w-full after:bg-hero after:lg:ml-[30px] after:lg:mt-[30px]">
             {/* <img           src="https://yt3.ggpht.com/ytc/AAUvwnjnKn-gLP2S7YuxnRIAO3pBNFgU9wxDVsZlzsabQQ=s900-c-k-c0x00ffffff-no-rj"
  alt="Jack Parker"/> */}
+ <Image src={"/assets/abrelo-about.png"}width={400} height={400} alt="abrelo" /> 
           </figure>
         </div>
       </section>
