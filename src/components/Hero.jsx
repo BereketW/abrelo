@@ -8,11 +8,11 @@ export default function Hero() {
   return (
     <div className="pl-24 flex gap-10 items-center -z-10 ">
       <div className="">
-        <img
+        {/* <img
           class="mt-1 mb-4 hidden transition-opacity duration-500 group-[.vv-slide-played]:opacity-100 group-[.swiper-slide-active:not(.vv-slide-played)]:opacity-100 lg:block"
           src="https://valkivid.dan-fisher.dev/assets/img/yt1/youtube.svg"
           alt="YouTube Logo"
-        />
+        /> */}
         <h2 className="text-7xl mb-5 flex flex-col items-center font-bold leading-none lg:items-start">
           <span className="text-2xl lg:text-5xl md:text-3xl">
             {"Abrelo HD's"}
