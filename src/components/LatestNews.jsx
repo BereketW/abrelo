@@ -33,11 +33,11 @@ export default function LatestNews() {
           <div class="col-span-full sm:col-span-6 lg:col-span-4">
             <figure class="group overflow-hidden bg-gray-900">
               <a href="_yt1-single.html">
-                <img
+                {/* <img
                   class="aspect-[37/24] h-full w-full max-w-full object-cover duration-300 group-hover:scale-110 group-hover:opacity-75"
                   src="assets/img/yt1/samples/post-img-1-370x240.jpg"
                   alt="Next month I’ll be unboxing the exclusive “Last of Them II” deluxe version"
-                />
+                /> */}
               </a>
             </figure>
             <div class="relative -mt-20 mr-8 lg:mr-10">

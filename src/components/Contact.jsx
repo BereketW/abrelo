@@ -11,9 +11,9 @@ export default function Contact() {
                 Something
                 <br />
                 in your <span className="text-hero">mind</span>?<br />
-                Let’s talk!
+                {"Let’s"} talk!
               </h2>
-              <div className="lg:text-lg tracking-tighter lg:leading-8 lg:pr-10">  <p>Send us a message and let’s discuss your ideas, suggestions, and more!</p>
+              <div className="lg:text-lg tracking-tighter lg:leading-8 lg:pr-10">  <p>Send us a message and {"let’s"} discuss your ideas, suggestions, and more!</p>
               </div>
             </div>
             <div className="col-start-2 md:col-start-6 col-end-12">
@@ -55,12 +55,12 @@ export default function Contact() {
                 </div>
               </form>
             </div>
-            <img
+            {/* <img
               className="hidden pointer-events-none md:block absolute -z-10 left-0 bottom-0 md:max-w-[290px] lg:max-w-[370px] xl:max-w-none h-auto"
               src="https://valkivid.dan-fisher.dev/assets/img/yt1/contact-form-decoration.png"
 
               alt=""
-            />
+            /> */}
           </div>
          
         </div>
