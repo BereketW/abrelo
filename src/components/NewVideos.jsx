@@ -4,11 +4,11 @@ export default function NewVideos() {
   return (
     <div className="container mx-auto justify-center  items-center gap-20 flex px-24  py-24 pb-44">
       <div className="w-1/2 h-1/2">
-        {/* <img
+        <img
           className="rounded w-full h-[400px] object-cover"
           src="https://i.ibb.co/NyDhLpC/Screenshot-from-2024-07-22-22-50-17.png"
           alt="Video Preview"
-        /> */}
+        />
       </div>
       <div className="flex flex-col w-1/3 ">
         <div className="mb-8 ">

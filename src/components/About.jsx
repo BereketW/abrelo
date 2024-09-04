@@ -6,8 +6,8 @@ export default function About(){
     <div className="container">
       <figure className="relative -mt-20 mb-14 bg-white shadow-3xl lg:-mt-[200px] lg:mb-40">
         <a href="#">
-          {/* <img className="h-auto w-full" src="assets/img/yt1/samples/about-youtube-img.jpg"
-          alt="YouTube Channel"/> */}
+          <img className="h-auto w-full" src="assets/img/yt1/samples/about-youtube-img.jpg"
+          alt="YouTube Channel"/>
         </a>
       </figure>
       <section className="grid grid-cols-12 gap-x-5 gap-y-10 md:gap-x-6 lg:gap-x-[30px] mb-20 md:mb-40 lg:mb-52 xl:mb-60">
@@ -31,8 +31,8 @@ export default function About(){
         </div>
         <div className="col-span-full md:col-start-7 md:col-end-13 md:pl-7 lg:col-start-7 lg:col-end-12 lg:pl-[70px]">
           <figure className="relative isolate mx-auto w-fit after:absolute after:left-0 after:top-0 after:-z-10 after:ml-[20px] after:mt-[20px] after:h-full after:w-full after:bg-hero after:lg:ml-[30px] after:lg:mt-[30px]">
-            {/* <img           src="https://yt3.ggpht.com/ytc/AAUvwnjnKn-gLP2S7YuxnRIAO3pBNFgU9wxDVsZlzsabQQ=s900-c-k-c0x00ffffff-no-rj"
- alt="Jack Parker"/> */}
+            <img           src="https://yt3.ggpht.com/ytc/AAUvwnjnKn-gLP2S7YuxnRIAO3pBNFgU9wxDVsZlzsabQQ=s900-c-k-c0x00ffffff-no-rj"
+ alt="Jack Parker"/>
           </figure>
         </div>
       </section>
@@ -186,8 +186,8 @@ export default function About(){
                 </div>
                 <div className="basis-full md:basis-[45%] overflow-hidden">
                   <a href="https://www.youtube.com/watch?v=XE0fU9PCrWE" className="glightbox group relative block h-full overflow-hidden bg-gray-900">
-                    {/* <img className="h-full w-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-75"
-                    src="assets/img/yt1/samples/about-featured-cover.jpg" alt=""/> */}
+                    <img className="h-full w-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-75"
+                    src="assets/img/yt1/samples/about-featured-cover.jpg" alt=""/>
                     <span className="absolute top-1/2 left-1/2 flex aspect-square w-[60px] -translate-x-2/4 -translate-y-2/4 items-center justify-center rounded-full bg-hero">
                       <svg role="img" className="mr-[-3px] h-[22px] w-[18px] fill-white">
                         <use xlink="https://valkivid.dan-fisher.dev/assets/img/yt1/sprite.svg#play">

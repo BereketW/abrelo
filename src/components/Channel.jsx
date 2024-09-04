@@ -33,11 +33,11 @@ export default function Channel() {
                 href="https://www.youtube.com/watch?v=ZKXE5PlfRko&t=261s"
                 className=" group relative block h-full overflow-hidden bg-gray-900"
               >
-                {/* <img
+                <img
                   className="h-full w-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-75"
                   src="https://i.ytimg.com/vi/ZKXE5PlfRko/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAfOw3xd3ulC-usD5Ul84U0FAY9cQ"
                   alt=""
-                /> */}
+                />
                 <span className="absolute top-1/2 left-1/2 flex aspect-square w-14 -translate-x-2/4 -translate-y-2/4 items-center justify-center rounded-full bg-accent md:w-20">
                   <svg
                     className="mr-[-3px] h-14 w-14 rounded-full"
