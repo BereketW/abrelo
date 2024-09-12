@@ -1,16 +1,59 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function VideoOfTheMonth() {
+    const {videos, setVideos} = useState(null)
+    useEffect(() => {
+      async function getData() {
+        try {
+          const response = await fetch(
+            `https://www.googleapis.com/youtube/v3/search?key=${NEXT_PUBLIC_API_KEY}&channelId=${NEXT_PUBLIC_CHANNEL_ID}&part=snippet,id&order=date&maxResults=40`
+          );
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const data = await response.json();
+          const currentMonthVideos = data.items.filter(video => {
+            const uploadDate = new Date(video.snippet.publishedAt);
+            const month = uploadDate.getMonth(); // Get month (0 = January, 11 = December)
+            const year = uploadDate.getFullYear();
+            
+            // Replace with the desired month and year
+            return (month === 8 && year === 2024); // For September 2024
+          });
+        
+          // Step 3: Fetch statistics (views) for each video
+          const videoDetailsPromises = currentMonthVideos.map(video => fetchVideoDetails(video.id.videoId));
+          const videosWithStats = await Promise.all(videoDetailsPromises);
+        
+          // Step 4: Find the video with the highest views
+          const videoOfTheMonth = videosWithStats.reduce((maxVideo, currentVideo) => {
+            return currentVideo.views > maxVideo.views ? currentVideo : maxVideo;
+          });
+          console.log("video",videoOfTheMonth)
+          setVideos(videoOfTheMonth)
+        } catch (error) {
+          setError(error.message);
+        } finally {
+          setLoading(false);
+        }
+      }
+
+      getData();
+    }, [setVideos]);
+
+   const pathname = usePathname()
   return (
-    <div className="relative isolate -mb-20">
+    <div className={`${pathname === "/support" ? "hidden":""} relative isolate -mb-20`}>
       <div className="container ">
-        <div className="pl-36 relative grid grid-cols-12 gap-x-7 bg-hero text-white">
+        <div className="lg:pl-36 md:pl-16 sm:pl-8 pl-2 relative grid grid-cols-12 gap-x-7 bg-hero text-white">
           <div className="col-span-full flex flex-col justify-center gap-y-4 py-8 px-5 md:col-span-5 md:gap-y-6 md:py-10 md:px-0 lg:col-span-5 lg:py-0 xl:col-span-3">
             <div className="uppercase tracking-tighter">Unbox Spotlight</div>
             <div className="text-4xl font-bold tracking-tight md:mb-5 md:text-5xl md:leading-[0.9em]">
+              {videos}
               Video of the Month!
             </div>
           </div>
@@ -20,11 +63,11 @@ export default function VideoOfTheMonth() {
               className="glightbox group relative block h-full overflow-hidden bg-gray-900 md:-ml-7"
             >
               <Image
-                src="/assets/img/yt1/samples/spotlight-cover.jpg"
+                src="/assets/abrelo-reacting.png"
                 alt="Video of the Month"
-                width={500}
-                height={300}
-                className="h-full w-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-75"
+                width={200}
+                height={100}
+                className="w-full h-[300px] object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-75"
               />
               <span className="absolute top-1/2 left-1/2 flex aspect-square w-[60px] -translate-x-2/4 -translate-y-2/4 items-center justify-center rounded-full bg-accent">
                 <svg

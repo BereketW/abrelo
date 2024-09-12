@@ -77,3 +77,9 @@
   html{
     font-family: Poppins;
   }
+  ::-webkit-scrollbar{
+    display: none;
+  }
+  .border-border{
+    
+  }

@@ -15,7 +15,7 @@ export default function About(){
         <div className="col-span-full md:col-start-1 md:col-end-6 lg:col-start-2 lg:col-end-6 xl:pt-14">
           <hgroup className="flex flex-col-reverse gap-y-2 md:gap-y-3 mb-6 md:mb-12">
             <h2 className="text-2xl font-bold leading-none text-primary dark:text-white md:text-3xl lg:text-4xl lg:tracking-tighter xl:text-5xl">
-              Who is Jack Parker?
+              Who is Abreham Tekeste?
             </h2>
             <p className="leading-tight tracking-tighter text-primary dark:text-white xl:text-2xl">
               Get to know me
@@ -34,7 +34,7 @@ export default function About(){
           <figure className="relative isolate mx-auto w-fit after:absolute after:left-0 after:top-0 after:-z-10 after:ml-[20px] after:mt-[20px] after:h-full after:w-full after:bg-hero after:lg:ml-[30px] after:lg:mt-[30px]">
             {/* <img           src="https://yt3.ggpht.com/ytc/AAUvwnjnKn-gLP2S7YuxnRIAO3pBNFgU9wxDVsZlzsabQQ=s900-c-k-c0x00ffffff-no-rj"
  alt="Jack Parker"/> */}
- <Image src={"/assets/abrelo-about.png"}width={400} height={400} alt="abrelo" /> 
+ <Image src={"/assets/about-abrelo.jpg"}width={400} height={300} alt="abrelo" /> 
           </figure>
         </div>
       </section>

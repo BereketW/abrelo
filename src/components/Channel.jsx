@@ -3,10 +3,10 @@ import React from "react";
 
 export default function Channel() {
   return (
-    <section className=" dark:bg-channel-dark">
+    
       <section className="relative ">
-        <div className="relative  isolate px-20  overflow-hidden  pt-16 after:absolute after:inset-x-0 after:top-0 after:bottom-16 after:-z-20 bg-svg  sm:pb-10 sm:pt-20 after:sm:bottom-24 md:pb-12 md:pt-32 after:md:bottom-28 lg:pb-16 lg:pt-36 after:lg:bottom-44 xl:pt-48 xl:pb-20 after:xl:bottom-60">
-          <div className="px-24 ">
+        <div className="relative isolate overflow-hidden pb-8 pt-16 after:absolute after:inset-x-0 after:top-0 after:bottom-16 after:-z-20 after:bg-gray-100 dark:after:bg-gray-800 sm:pb-10 sm:pt-20 after:sm:bottom-24 md:pb-12 md:pt-32 after:md:bottom-28 lg:pb-16 lg:pt-36 after:lg:bottom-44 xl:pt-48 xl:pb-20 after:xl:bottom-60">
+          <div className="px-4 md:px-16 sm:px-8 lg:px-24 ">
             <div className="mb-12 flex flex-col flex-wrap gap-y-6 sm:mb-16 md:mb-20 lg:mb-24 xl:mb-28 xl:gap-y-12 items-baseline justify-between sm:flex-row">
               <div className="flex flex-col-reverse gap-y-2 sm:gap-y-3 md:gap-y-4 lg:gap-y-5 xl:gap-y-6">
                 <h2 className="dark:text-white leadin-none text-3xl font-bold tracking-tight text-primary sm:text-6xl md:text-6xl lg:text-6xl xl:text-8xl xl:leading-none">
@@ -30,14 +30,14 @@ export default function Channel() {
             </div>
             <div className="block  aspect-video">
               <Link
-                href="https://www.youtube.com/watch?v=ZKXE5PlfRko&t=261s"
+                href="https://youtu.be/ZKXE5PlfRko"
                 className=" group relative block h-full overflow-hidden bg-gray-900"
               >
-                {/* <img
+                <img
                   className="h-full w-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-75"
-                  src="https://i.ytimg.com/vi/ZKXE5PlfRko/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAfOw3xd3ulC-usD5Ul84U0FAY9cQ"
+                  src="/assets/channel-banner.jpg"
                   alt=""
-                /> */}
+                />
                 <span className="absolute top-1/2 left-1/2 flex aspect-square w-14 -translate-x-2/4 -translate-y-2/4 items-center justify-center rounded-full bg-accent md:w-20">
                   <svg
                     className="mr-[-3px] h-14 w-14 rounded-full"
@@ -196,6 +196,5 @@ export default function Channel() {
           </svg>
         </div>
       </section>
-    </section>
   );
 }

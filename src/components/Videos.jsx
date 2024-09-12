@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import CarouselButton from "./CarouselButton";
-import Loader from "./Loader";
+// import Loader from "./Loader";
 
 export default function Videos({ left = true, dark }) {
-  const [videos, setVideos] = useState([]);
+   const [videos, setVideos] = useState([]);
   const [transform, setTransform] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,18 +23,22 @@ export default function Videos({ left = true, dark }) {
       setTransform((prevTransform) => prevTransform + containerWidth);
     }
   };
+  const  NEXT_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_API_KEY
+
+  const NEXT_PUBLIC_CHANNEL_ID = process.env.NEXT_PUBLIC_CHANNEL_ID
+  
 
   useEffect(() => {
     async function getData() {
       try {
         const response = await fetch(
-          "https://www.googleapis.com/youtube/v3/search?key=AIzaSyCJovcEa_LAaf1oEMVOyjoU8ntdrCHFVto&channelId=UCHxhjHSPRdm837kwfL8hIIA&part=snippet,id&order=date&maxResults=10"
+          `https://www.googleapis.com/youtube/v3/search?key=${NEXT_PUBLIC_API_KEY}&channelId=${NEXT_PUBLIC_CHANNEL_ID}&part=snippet,id&order=date&maxResults=10`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         setVideos(json.items);
       } catch (error) {
         setError(error.message);
@@ -43,15 +47,16 @@ export default function Videos({ left = true, dark }) {
       }
     }
     getData();
-  }, []);
+  });
 
-  if (loading) {
-    return <Loader/>
-  }
+  // if (loading) {
+  //   return <Loader/>
+  // }
 
   if (error) {
     return <div>Error: {error}</div>;
   }
+  
 
   return (
     <div className=" ">
@@ -78,7 +83,7 @@ export default function Videos({ left = true, dark }) {
           <div
             className={`h-full overflow-hidden ${dark ? "dark:bg-videos-dark" : "dark-bg-inherit"} transition-all duration-200 bg-white pt-4 text-lg font-bold absolute  ${
               left ? "-top-5 z-50 left-0" : "-top-5 z-50 right-0"
-            }`}
+            }`}e
           >
             <div className="flex gap-4">
               <CarouselButton

@@ -7,10 +7,10 @@ export default function Rating({ rating }) {
         {Array.from({ length: 5 }, (_, i) => (
           <svg
             key={i}
-            class={`w-4 h-4 ${
-              rating <= i ? " text-gray-300 " : "text-yellow-300"
+            className={`w-4 h-4 ${
+              rating <= i ? " text-gray-300 " : "text-hero"
             } `}
-            aria-hidden="true"
+            ariaHidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 22 20"

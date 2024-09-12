@@ -1,7 +1,25 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import SvgMapPath from "./SvgMapPath";
+import Image from "next/image";
+import numeral from "numeral";
+import Link from "next/link";
 
 export default function ChannelStatus() {
+  const [subscribers, setSubscribers] = useState();
+  useEffect(()=>{
+   async function getData(){
+    const response = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${process.env.NEXT_PUBLIC_CHANNEL_ID}&key=${process.env.NEXT_PUBLIC_API_KEY}`)
+    const data = await response.json()
+    console.log(data)
+    const sub = data.items[0].statistics.subscriberCount;
+    setSubscribers(sub)
+   }
+   getData()
+  }, [])
+  console.log(subscribers);
+  
+
   return (
     <section className="dark">
       <div className="isolate bg-white py-14 dark:bg-gray-900 md:py-32 lg:py-44 xl:py-48">
@@ -18,18 +36,20 @@ export default function ChannelStatus() {
               </div>
             </div>
             <div className="text-2xl font-bold leading-none tracking-tighter text-primary dark:text-white sm:text-4xl md:text-5xl lg:text-8xl xl:text-[120px]">
-              1,892,436
+             {numeral(subscribers).format("0,0")}
             </div>
             <div className="flex gap-4 md:gap-5">
-              <img
+              {/* <img
                 className="w-8 shrink-0 self-start rounded-full md:w-10"
                 src="assets/img/yt1/samples/user-1-40x40.jpg"
                 alt=""
-              />
+              /> */}
+              <Image src={"/assets/abrelo-about.png"} alt="abrelo" height={8} width={8} className="w-10 h-10 shrink-0 self-start rounded-full md:w-10"
+                />
               <div className="flex-1 text-primary dark:text-white">
-                <div className="font-bold leading-none text-primary dark:text-white md:text-lg md:leading-snug">
-                  <span className="text-hero">@</span>JackUNBX
-                </div>
+                <Link href={"https://www.youtube.com/@abrelohd"} className="font-bold leading-none text-primary dark:text-white md:text-lg md:leading-snug">
+                  <span className="text-hero">@</span>abreloHd
+                </Link>
                 <div className="text-xs leading-tighter md:text-sm">
                   on Youtube
                 </div>

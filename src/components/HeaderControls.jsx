@@ -7,38 +7,66 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-
-export default function HeaderControls() {
+import { usePathname } from "next/navigation";
+import { useCart } from "@/store/cart";
+import {useTheme} from "next-themes"
+import { MenuIcon } from "lucide-react";
+export default function HeaderControls({display, setDisplay}) {
+  const pathname = usePathname()
+  const isHomepage = pathname === "/";
+  const {cartProducts} = useCart()
   // const [theme, setTheme] = useState("light");
  // Light theme as default
- const [darkMode, setDarkMode] = useState(false);
+//  const [darkMode, setDarkMode] = useState(()=>{
+//   if (typeof window !== 'undefined') {
+//     const saved = localStorage.getItem('darkMode');
+//     return saved !== null ? JSON.parse(saved) : false;
+//   }
+//   return false; 
+//  });
 
- useEffect(()=>{
-  if(darkMode){
-    document.documentElement.classList.add('dark')
+//  useEffect(()=>{
+//   localStorage.setItem('darkMode', darkMode)
+//   if(darkMode){
+//     document.documentElement.classList.add('dark')
+//   }
+//   else{
+//     document.documentElement.classList.remove('dark')
+//   }
+//  },[darkMode])
+const { theme, setTheme } = useTheme("light");
+
+useEffect(() => {
+  // On mount, check if there's a theme in localStorage
+  const storedTheme = localStorage.getItem('theme');
+  if (storedTheme) {
+    setTheme(storedTheme); // Apply the stored theme
   }
-  else{
-    document.documentElement.classList.remove('dark')
-  }
- })
+}, [setTheme]);
+
+const handleThemeChange = (newTheme) => {
+  setTheme(newTheme);
+  localStorage.setItem('theme', newTheme); // Save the theme in localStorage
+};
 
   return (
-    <div className="flex h-10 items-center  space-x-4">
-      <div  className="relative bottom-0">
+    <div className="flex h-10 jusify-center items-center  space-x-1 sm:space-x-2 md:space-x-3 lg:space-x-4 ">
+      <div  className=" flex relative bottom-0">
         <label
           htmlFor="theme-toggle"
           className="relative inline-flex cursor-pointer items-end "
         >
           <input
             type="checkbox"
+            checked={theme === 'dark'}
             id="theme-toggle"
             className="peer sr-only"
-            onChange={()=>setDarkMode(!darkMode)}
+            onChange={() => handleThemeChange(theme === 'dark' ? 'light' : 'dark')}
           />
-          <span className="relative z-10 block h-6 w-11 rounded-full border-2 border-black after:absolute after:top-0.5 after:left-0.5 after:h-4 after:w-4 after:rounded-full after:bg-white after:transition-transform peer-checked:after:translate-x-[20px]"></span>
+          <span className={`relative z-10 block h-6 w-11 rounded-full border-2 dark:border-white   after:absolute after:top-0.5 after:left-0.5 after:h-4 after:w-4 after:rounded-full after:bg-black dark:after:bg-white after:transition-transform peer-checked:after:translate-x-[20px]  ${isHomepage ? "border-white after:bg-white" : "after:bg-black border-black"}`}></span>
 
           <svg
-            className="absolute top-1 left-1 h-4 w-4 stroke-black"
+            className="absolute  top-1 left-1 h-4 w-4 stroke-red-300"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +123,7 @@ export default function HeaderControls() {
           </svg>
 
           <svg
-            className="absolute top-1 right-1 h-4 w-4 stroke-black"
+            className={`absolute top-1 right-1 h-4 w-4 ${isHomepage ? "stroke-white" : "stroke-black"} `}
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -109,9 +137,9 @@ export default function HeaderControls() {
       </div>
 
       <div className="flex items-center">
-        <Link className="block py-4 px-2 xl:px-3" href="_yt1-account.html">
+        <Link className="block  xl:px-3" href="_yt1-account.html">
           <svg
-            className="h-6 w-6 fill-black"
+            className={`h-6 w-6 ${isHomepage ? "fill-white": "fill-black"}`}
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -127,9 +155,10 @@ export default function HeaderControls() {
         </Link>
       </div>
 
-      <div className="flex items-center">
+      <div onClick={()=> setDisplay(true)} className="flex cursor-pointer relative items-center">
+        <span className={`${pathname ==="/"?"text-white border-white":"text-dark border-black"} border-2 text-sm   absolute -top-1 -right-3 font-bold p-2 flex items-center justify-center  rounded-full h-2 w-2`}>{cartProducts.length}</span>
         <svg
-          className="h-6 w-6 fill-black"
+          className={`h-6 w-6 ${isHomepage ? "fill-white" : "fill-black"}`}
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -160,6 +189,7 @@ export default function HeaderControls() {
           </g>
         </svg>
       </div>
+      <button className="lg:hidden px-4"><MenuIcon /></button>
     </div>
   );
 }

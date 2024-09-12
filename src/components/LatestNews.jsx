@@ -1,7 +1,7 @@
 import React from "react";
 export default function LatestNews() {
   return (
-    <section class="py-14 md:py-32 lg:py-44 xl:py-48">
+    <section class="py-14 md:py-32 md:px-16 sm:px-8 px-2 lg:py-44 xl:py-48">
       <div class="container">
         <div class="mb-12 flex flex-col flex-wrap gap-y-6 sm:mb-16 md:mb-20 lg:mb-24 xl:mb-28 xl:gap-y-12 items-baseline justify-between sm:flex-row">
           <div class="flex flex-col-reverse gap-y-2 sm:gap-y-3 md:gap-y-4 lg:gap-y-5 xl:gap-y-6">

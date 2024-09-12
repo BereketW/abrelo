@@ -1,16 +1,133 @@
-import Image from "next/image";
+"use client";
+// import { useCart } from "@app/client/store/cart";
 import React from "react";
+// import Skeleton from "react-loading-skeleton";
+// import "react-loading-skeleton/dist/skeleton.css";
 import Rating from "./Rating";
+// import { MdFavoriteBorder } from "react-icons/md";
+// import { useWishlist } from "@app/client/store/wishlist";
+import CurrencyFormat from "./CurrencyFormatter";
+import Link from "next/link";
+import { useCart } from "@/store/cart";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { showToastMessage, warningToast } from "@/lib/toasts";
 
-export default function ProductCard() {
+// import AOS from "aos";
+// import "aos/dist/aos.css";
+// import { useEffect } from "react";
+
+// import { BsCart2 } from "react-icons/bs";
+// import { getOneProduct } from "@app/client/data/products";
+
+export default function ProductCard({ product, children }) {
+  const { addToCart, cartProducts } = useCart();
+  // const { addToWishlist, wishlist } = useWishlist();
+  // const wishlistExist = wishlist.find((cart) => cart.id === product.id);
+  const exist = cartProducts.find((cart) => cart.id === product.id);
+  // useEffect(() => {
+  //   AOS.init({
+  //     once: true,
+
+  //     duration: 1500,
+  //     easing: "ease-out-cubic",
+  //   });
+  // }, []);
+ 
+  
+  function handleAddToCart(product, e) {
+    e.stopPropagation();
+    if(exist){
+      warningToast()
+    }
+    if (!exist) {
+       showToastMessage()
+      addToCart(product);
+     
+    }
+    
+  }
+
+  // function handleAddToWishList(product, e) {
+  //   e.stopPropagation();
+  //   if (!wishlistExist) {
+  //     addToWishlist(product);
+  //   }
+  // }
+
   return (
-   <div className="border border-black">
-        {/* <img src="https://valkivid.dan-fisher.dev/assets/img/yt1/samples/product-1-370x438.jpg" alt="product image" height={400} width={300} /> */}
-        <span>CLOTHING</span>
-        <h3>Product Name</h3>
-        <Rating rating={4}/>
-        <span>$16</span>
+    <div
+      data-aos="zoom-out-up"
+      className="group  flex flex-col border rounded-xl p-4 transition-all cursor-pointer"
+    >
+      <div className="h-52 relative overflow-hidden w-full self-center transition-all ease-in-out mb-3">
+        <div className="p-4">
+          {product.image ? (
+            <Link href={`shop/${product.id}`}>
+              <img
+                src={product.image}
+                alt="image"
+                className="scale-110 rounded group-hover:scale-125 transition-all ease-in-out duration-300 w-full object-contain h-36"
+              />
+            </Link>
+          ) : (
+            <div className=" flex items-center justify-center h-36">
+              {/* <Skeleton width={200} height={144} /> */}
+            </div>
+          )}
+        </div>
+        <div className="flex z-0 translate-y-16 translate-x-20 transition-all duration-500 group-hover:translate-y-0  ease-in-out p-2 gap-4 items-center justify-center w-full absolute bottom-0 left-0">
+          
+          <button
+            className="inline-block bg-hero z-10 px-5 py-2 bg-color-secondary rounded text-white text-sm"
+            onClick={(e) => handleAddToCart(product, e)}
+          >
+          <svg
+          className={`h-6 w-6 fill-white `}
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M3.864 16.4552C4.40967 18.6379 4.68251 19.7292 5.49629 20.3646C6.31008 21 7.435 21 9.68486 21H14.3155C16.5654 21 17.6903 21 18.5041 20.3646C19.3179 19.7292 19.5907 18.6379 20.1364 16.4552C20.9943 13.0234 21.4233 11.3075 20.5225 10.1538C19.6217 9 17.853 9 14.3155 9H9.68486C6.14745 9 4.37875 9 3.47791 10.1538C2.94912 10.831 2.87855 11.702 3.08398 13"
+              stroke="#ffffff"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            ></path>
+            <path
+              d="M19.5 9.5L18.7896 6.89465C18.5157 5.89005 18.3787 5.38775 18.0978 5.00946C17.818 4.63273 17.4378 4.34234 17.0008 4.17152C16.5619 4 16.0413 4 15 4M4.5 9.5L5.2104 6.89465C5.48432 5.89005 5.62128 5.38775 5.90221 5.00946C6.18199 4.63273 6.56216 4.34234 6.99922 4.17152C7.43808 4 7.95872 4 9 4"
+              stroke="#ffffff"
+              stroke-width="1.5"
+            ></path>
+            <path
+              d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4C15 4.55228 14.5523 5 14 5H10C9.44772 5 9 4.55228 9 4Z"
+              stroke="#ffffff"
+              stroke-width="1.5"
+            ></path>
+          </g>
+        </svg>
+          </button>
+          
+        </div>
+      </div>
+      <div>
+        <p className="text-sm">{product.title.slice(0, 25)}</p>
+        {children}
 
-   </div>
+        <p className="flex gap-4 font-bold">
+          <span className="text-primary-p line-through">
+            {<CurrencyFormat amount={product.price + 10} /> ||"" }
+          </span>
+          {<CurrencyFormat amount={product.price} /> || ""}
+        </p>
+      </div>
+    </div>
   );
 }
