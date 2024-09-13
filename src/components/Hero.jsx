@@ -17,7 +17,7 @@ export default function Hero() {
           alt="YouTube Logo"
         />
         <h2 className="text-[100px] mb-5 flex flex-col items-center font-bold leading-none lg:items-start">
-          <span className="text-5xl lg:text-5xl md:text-3xl">
+          <span className="text-2xl leading-none tracking-tighter transition-opacity delay-[400ms] duration-500 group-[.vv-slide-played]:opacity-100 group-[.swiper-slide-active:not(.vv-slide-played)]:opacity-100 lg:text-5xl xl:text-6.5xl">
             {"Abrelo HD's"}
           </span>{" "}
           {/* <span className="text-[#fffac3]">REACTION</span> */}
