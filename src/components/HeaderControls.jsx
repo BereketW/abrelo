@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 import { useCart } from "@/store/cart";
 import {useTheme} from "next-themes"
 import { MenuIcon } from "lucide-react";
-export default function HeaderControls({display, setDisplay}) {
+export default function HeaderControls({display, setDisplay, setHidden}) {
   const pathname = usePathname()
   const isHomepage = pathname === "/";
   const {cartProducts} = useCart()
@@ -189,7 +189,7 @@ const handleThemeChange = (newTheme) => {
           </g>
         </svg>
       </div>
-      <button className="lg:hidden px-4"><MenuIcon /></button>
+      <button onClick={()=>setHidden(false)} className="lg:hidden px-4"><MenuIcon /></button>
     </div>
   );
 }
