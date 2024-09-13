@@ -9,7 +9,7 @@ export default function Videos({ left = true, dark }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const containerWidth = 320; // Width of each video container
+  const containerWidth = 350; // Width of each video container
   const visibleVideos = 4; // Number of videos to be visible
 
   const moveToRight = () => {
@@ -47,7 +47,7 @@ export default function Videos({ left = true, dark }) {
       }
     }
     getData();
-  });
+  },[]);
 
   // if (loading) {
   //   return <Loader/>
@@ -60,18 +60,19 @@ export default function Videos({ left = true, dark }) {
 
   return (
     <div className=" ">
-      <div className={`relative ${dark && "dark:bg-videos-dark"} ml-20 bottom-20`}>
+      <div className={`relative ${dark && "dark:bg-videos-dark"} lg:px-0 px-8 lg:ml-20 bottom-6`}>
         <div className=" bg-white dark:bg-videos-dark overflow-hidden ">
           <div
-            className="pl-20 pt-8 flex gap-4"
+            className="lg:pl-20 border border-black pt-8 flex gap-4"
             style={{
               transform: `translateX(${transform}px)`,
               transition: "transform 0.3s ease-in-out",
             }}
           >
             {videos.map((video) => (
-              <div key={video.id.videoId} className="p-4">
+              <div key={video.id.videoId} className="lg:p-4  lg:w-auto  \ z-50">
                 <iframe
+                width={350}
                   src={`https://www.youtube.com/embed/${video.id.videoId}?mute=1`}
                 ></iframe>
                 <h2 className="mt-2">{video.snippet.title}</h2>
@@ -81,8 +82,8 @@ export default function Videos({ left = true, dark }) {
         </div>
         {videos.length > visibleVideos && (
           <div
-            className={`h-full overflow-hidden ${dark ? "dark:bg-videos-dark" : "dark-bg-inherit"} transition-all duration-200 bg-white pt-4 text-lg font-bold absolute  ${
-              left ? "-top-5 z-50 left-0" : "-top-5 z-50 right-0"
+            className={`lg:h-full overflow-hidden ${dark ? "dark:bg-videos-dark" : "dark-bg-inherit"} transition-all duration-200 bg-white pt-4 text-lg font-bold absolute  ${
+              left ? "-top-5 z-50 left-0" : "-top-5 lg:z-50 right-0"
             }`}e
           >
             <div className="flex gap-4">

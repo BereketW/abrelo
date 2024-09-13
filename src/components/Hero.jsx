@@ -8,7 +8,7 @@ import SocialLinks from "./SocialLinks"
 
 export default function Hero() {
   return (
-    <div className="  lg:pl-24 flex gap-10 mt-24 lg:-mt-12 lg:items-center justify-center  overflow-hidden  h-full -z-10 ">
+    <div className="  lg:pl-24 flex gap-10 mt-24 lg:-mt-16 lg:items-center justify-center  overflow-hidden  h-full -z-10 ">
      <SocialLinks className="lg:flex hidden flex-col gap-10 z-50 relative  -left-24"/>
       <div className="text-center  lg:text-left">
         <img
@@ -45,7 +45,7 @@ export default function Hero() {
       height={800}
       
         src="/assets/reacting-removebg.png"
-        className="hidden object-cover lg:block overflow-hidden relative scale-[2.3]  -left-32"
+        className="hidden object-cover lg:block overflow-hidden relative scale-[2]  -left-32"
         alt="Center Image"
       />
       {/* Videos around the image */}

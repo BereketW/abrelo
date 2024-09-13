@@ -43,7 +43,7 @@ export default function VideoOfTheMonth() {
       }
 
       getData();
-    }, [setVideos]);
+    });
 
    const pathname = usePathname()
   return (
