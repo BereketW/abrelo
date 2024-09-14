@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 export default function About(){
     return(
-        <main id="main-content" className="grow lg:pt-0">
+        <main id="main-content" className="grow  mt-12 lg:pt-0">
   <div className="pt-14 pb-24 lg:pb-52 lg:pt-40">
     <div className="container">
       <figure className="relative -mt-20 mb-14 bg-white shadow-3xl lg:-mt-[200px] lg:mb-40">

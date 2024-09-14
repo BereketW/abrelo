@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css'
 import { Ri24HoursLine,RiArrowLeftCircleFill, RiArrowRightCircleFill, RiSkipLeftLine } from "react-icons/ri";
-import { MoveLeftIcon } from "lucide-react";
+import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 
 export default function Videos({ left = true, dark }) {
   const [videos, setVideos] = useState([]);
@@ -71,6 +71,7 @@ export default function Videos({ left = true, dark }) {
   if (error) {
     return <div>Error: {error}</div>;
   }
+  console.log(videos)
   var settings = {
     dots: true,
     lazyLoad: true,
@@ -105,15 +106,15 @@ export default function Videos({ left = true, dark }) {
         },
       },
     ],
-    nextArrow: <Button styles=" -top-10 h-10 w-10 flex items-center justify-center border bg-white text-primary border-white   absolute" icon=<RiArrowRightCircleFill size={100}/>/>,
-    prevArrow: <Button styles=" -top-10 left-10  h-10 w-10 flex items-center justify-center border bg-white text-primary border-white   absolute" icon=<RiArrowLeftCircleFill size={100}/>/>
+    nextArrow: <Button styles="-left-4  p-3 lg:-top-12 md:-top-12 -top-10   lg:h-14 md:h-14 md:w-10 sm:h-8 sm:w-10 h-6 w-8 lg:w-10 dark:bg-gray-900 border-none dark:text-white outline-none text-primary  flex items-center justify-center border bg-white  border-white   absolute" icon=<MoveRightIcon size={100}/>/>,
+    prevArrow: <Button styles=" lg:-top-12 md:-top-12 -top-10 lg:left-6 md:left-6 left-4 p-3 dark:bg-gray-900 border-none dark:text-white md:h-14 md:w-10 sm:h-8 sm:w-10 h-6 w-8  outline-none  text-primary   lg:h-14 lg:w-10 flex items-center justify-center border bg-white  border-white   absolute" icon=<MoveLeftIcon size={100}/>/>
 
   };
 
   
   function Button({onClick, icon, styles}){
     return(
-      <button onClick={onClick} className={styles} >{icon}</button>
+      <button onClick={onClick} className={styles } >{icon}</button>
     )
   }
   return (
@@ -161,15 +162,15 @@ export default function Videos({ left = true, dark }) {
     //     )}
     //   </div>
     // </div>
-    <div className="lg:px-24 md:px-16 sm:px-8 px-4 relative -top-10 bg-white">
+    <div className="lg:ml-24 md:ml-16 sm:ml-8 p-4 relative -top-10 bg-white dark:bg-gray-900">
       <Slider {...settings} >
         {videos.map((video) => (
-          <div key={video.id.videoId} className="lg:p-4  z-50">
+          <div key={video.id.videoId} className="lg:p-4 lg:pl-12 md:pl-8 sm:pl-4   z-50">
             <iframe
               className="lg:w-auto md:w-auto w-[450px]"
               src={`https://www.youtube.com/embed/${video.id.videoId}?mute=1`}
             ></iframe>
-            <h2 className="mt-2">{video.snippet.title}</h2>
+            <h2 className="my-4">{video.snippet.title}</h2>
           </div>
         ))}
       </Slider>

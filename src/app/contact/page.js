@@ -4,9 +4,9 @@ import { ThemeProvider } from "next-themes";
 import React from "react";
 export default function Page(){
     return (
-        <ThemeProvider>
-        <Header className="lg:px-24 md:px-16 sm:px-8 px-4"/>
-        <div className="pt-20 px-20">
+        <ThemeProvider className="lg:px-24 md:px-16 sm:px-8 px-4">
+        <Header className=""/>
+        <div className="pt-20">
             <Contact />
         </div>
         </ThemeProvider>
