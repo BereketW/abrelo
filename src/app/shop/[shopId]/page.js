@@ -59,7 +59,7 @@ export default function Home({ params }) {
   // Render the ProductDetail component with the single product data
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
-      <Header className="px-24" />
+      <Header className="lg:px-24 md:px-16 sm:px-8 px-4" />
       <ProductDetail singleProduct={singleProduct} id={params.shopId} />
     </ThemeProvider>
   );

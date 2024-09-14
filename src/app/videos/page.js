@@ -30,7 +30,7 @@ export default function Page() {
    
   return (
     <div>
-        <Header />
+        <Header className="lg:px-24 md:px-16 sm:px-8 px-4"/>
         <VideosHeader />
         <div className='flex flex-wrap gap-10'>
         {videos.map((video) => (

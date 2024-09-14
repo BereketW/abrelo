@@ -5,7 +5,7 @@ import React from "react";
 export default function Page(){
     return (
         <ThemeProvider>
-        <Header className="px-24"/>
+        <Header className="lg:px-24 md:px-16 sm:px-8 px-4"/>
         <div className="pt-20 px-20">
             <Contact />
         </div>
