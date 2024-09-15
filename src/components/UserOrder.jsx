@@ -7,7 +7,7 @@ export default async function Orders({ orders }) {
     return (
       <div className="flex items-center flex-col gap-4 justify-center w-full">
         <h1 className="font-semibold text-xl text-color-light">
-          You don't have any orders on your order list
+         {" You don't have any orders on your order list"}
         </h1>
         <Link
           href={"/shop"}
