@@ -9,7 +9,7 @@ import SocialLinks from "./SocialLinks"
 export default function Hero() {
   return (
     <div className=" w-full flex gap-10 mt-24 lg:-mt-16 lg:items-center     h-full -z-10 ">
-     <SocialLinks className="flex  flex-col lg:gap-14  lg:justify-between md:gap-6 sm:gap-4 gap-2 z-50   "/>
+     <SocialLinks className="flex  flex-col lg:gap-14  lg:justify-between md:gap-6 sm:gap-4 gap-5 z-50   "/>
       <div className=" lg:pl-12  ">
         <img
           class="mt-1 mb-4 hidden  transition-opacity duration-500 group-[.vv-slide-played]:opacity-100 group-[.swiper-slide-active:not(.vv-slide-played)]:opacity-100 lg:block"

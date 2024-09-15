@@ -11,6 +11,8 @@ import { usePathname } from "next/navigation";
 import { useCart } from "@/store/cart";
 import {useTheme} from "next-themes"
 import { MenuIcon } from "lucide-react";
+import { BsCart, BsCart2, BsCartFill, BsPerson } from "react-icons/bs";
+import { RiProfileFill } from "react-icons/ri";
 export default function HeaderControls({display, setDisplay, setHidden}) {
   const pathname = usePathname()
   const isHomepage = pathname === "/";
@@ -137,8 +139,8 @@ const handleThemeChange = (newTheme) => {
       </div>
 
       <div className="flex items-center">
-        <Link className="block  xl:px-3" href="_yt1-account.html">
-          <svg
+        <Link className="block  xl:px-3" href="/profile">
+          {/* <svg
             className={`h-6 w-6 ${isHomepage ? "fill-white": "fill-black"}`}
             viewBox="0 0 24 24"
             fill="none"
@@ -151,13 +153,14 @@ const handleThemeChange = (newTheme) => {
               strokeWidth="1.5"
               strokeLinecap="round"
             />
-          </svg>
+          </svg> */}
+          <BsPerson size={30}/>
         </Link>
       </div>
 
       <Link href={"/cart"} onMouseEnter={()=> setDisplay(true)} className="flex cursor-pointer relative items-center">
-        <span className={`${pathname ==="/"?"text-white border-white":"text-dark border-black"} border-2 text-sm   absolute -top-1 -right-3 font-bold p-2 flex items-center justify-center  rounded-full h-2 w-2`}>{cartProducts.length}</span>
-        <svg
+        <span className={`${pathname ==="/"?"text-white bg-hero border-white":"text-dark border-black"} border-2 text-sm  bg:white absolute -top-1 -right-3 font-bold p-2 flex items-center justify-center  rounded-full h-2 w-2`}>{cartProducts.length}</span>
+        {/* <svg
           className={`h-6 w-6 ${isHomepage ? "fill-white" : "fill-black"}`}
           viewBox="0 0 24 24"
           fill="none"
@@ -187,7 +190,8 @@ const handleThemeChange = (newTheme) => {
               stroke-width="1.5"
             ></path>
           </g>
-        </svg>
+        </svg> */}
+        <BsCart2 size={28}/>
       </Link>
       <button onClick={()=>setHidden(false)} className="lg:hidden px-4"><MenuIcon /></button>
     </div>

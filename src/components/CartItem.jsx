@@ -6,14 +6,14 @@ import CountQuantity from "./CountQuantity";
 import Rating from "./Rating";
 import { useCart } from "@/store/cart";
 import { usePathname } from "next/navigation";
-export default function CartItem({ product, flex=false }) {
+export default function CartItem({ product, fixed=false, flex=false }) {
  const pathname = usePathname()
   const { removeFromCart, cartProducts } = useCart();
   console.log(cartProducts)
   // console.log(removeFromCart);
   
   return (
-    <div key={product?.id} className="flex   mb-5 relative items-center gap-4">
+    <div key={product?.id} className={`flex ${fixed ? "w-[400px]" :""}  mb-5 relative justify-between items-center gap-4`}>
       <img className="w-20 rounded h-20" src={product?.image} alt="" />
 
       <div className="flex flex-col gap-1 ">

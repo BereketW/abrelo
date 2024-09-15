@@ -45,7 +45,7 @@ export default function Header({className=''}) {
         <HeaderControls setHidden = {setHidden} display={display} setDisplay ={setDisplay}/>
         
       </nav>
-      <div className={`z-50 ${display ? "translate-x-0 opacity-100" :" translate-x-[100%] opacity-0"} hidden lg:block text-black  dark:border-none transition-all duration-200  dark:text-white ${pathname!=="/" ? " dark:bg-channel-dark ":""} p-4 flex flex-col w-[400px]   shadow-md bg-white  overflow-y-scroll absolute top-16 ${pathname === "/" ? "right-0" : "right-16 border border-gray-300 rounded"}`}>
+      <div className={`z-50 ${display ? "w-[400px] opacity-100" :" w-0 opacity-0 hidden"} hidden lg:block text-black  dark:border-none transition-all duration-200  dark:text-white ${pathname!=="/" ? " dark:bg-channel-dark ":""} p-4 flex flex-col w-[400px]   shadow-md bg-white  overflow-y-scroll absolute top-16 ${pathname === "/" ? "right-0" : "right-16 border border-gray-300 rounded"}`}>
       <Cart display={display} setDisplay={setDisplay}/>
       </div>
     </header>

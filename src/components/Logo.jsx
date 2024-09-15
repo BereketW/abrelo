@@ -10,20 +10,20 @@ export default function Logo() {
 
   return (
     <div>
-      <Link href="/" className="h-[20px] flex gap-3 items-center font-bold text-2xl">
+      <Link href="/" className=" overflow-hidden h-[60px] flex gap-3 items-center font-bold ">
         {theme === "dark" ? (
           <Image
             src="/assets/logo.png"
             width={200}
-            height={200}
+            height={100}
             alt="dark-mode-logo"
-            className="object-cover"
+            className="object-cover h-1/2"
           />
         ) : theme === 'light' && pathname === "/" ? (
           <Image
             src="/assets/logo.png"
             width={200}
-            height={200}
+            height={100}
             alt="light-mode-logo"
             className="object-cover"
           />
