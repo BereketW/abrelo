@@ -3,7 +3,7 @@ import React from "react";
 
 export default function NewVideos() {
   return (
-    <section className="py-14 border px-5 sm:px-10 md:px-12 md:py-32 lg:py-44 xl:py-48">
+    <section className="py-8  px-5 sm:px-10 md:px-12 md:py-20 lg:py-28 xl:py-32">
       <div className="justify-center  items-center gap-12  md:flex  ">
         <div className="lg:w-1/2 lg:h-1/2 md:w-2/3 md:h-1/2">
           {/* <img

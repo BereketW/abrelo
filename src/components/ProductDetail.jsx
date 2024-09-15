@@ -37,7 +37,7 @@ export default function ProductDetail({ singleProduct, children }) {
   return (
     <div className="my-24 lg:px-24 md:px-16 sm:px-8 px-4">
       <div className="lg:flex  w-full gap-10 justify-between">
-        <div className=" w-1/2 h-2/6">
+        <div className=" lg:w-1/2 h-2/6">
           <Swiper
             loop={true}
             spaceBetween={10}
@@ -178,7 +178,7 @@ export default function ProductDetail({ singleProduct, children }) {
           </Swiper>
         </div>
         <div className="flex gap-4 flex-col flex-1 justify-center">
-          <h1 className=" text-slate-900 dark:text-white font-extrabold text-4xl">
+          <h1 className=" text-slate-900 w-full text-balance dark:text-white font-extrabold text-4xl">
             {singleProduct.title.slice(0, 30)}
           </h1>
           <span className="px-2 py-1 text-sm self-start bg-color-primary text-white rounded-full">
@@ -194,10 +194,10 @@ export default function ProductDetail({ singleProduct, children }) {
           </div>
           <Rating rating={singleProduct.rating} />
           <small>Description</small>
-          <p className="text-base w-3/4 dark:text-primary-p text-gray-600">
+          <p className="text-base break-words lg:w-3/4 dark:text-primary-p text-gray-600">
             {singleProduct.description.slice(0, 270)}...
           </p>
-          <div className="flex gap-10 mt-4">
+          <div className="flex justify-between gap-10 mt-4">
             <CountQuantity />
             <button
               onClick={() => {

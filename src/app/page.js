@@ -18,7 +18,7 @@ export default function Home() {
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
 
     <div className="relative overflow-x-hidden">
-      <div className="lg:bg-hero-gradient dark:bg-primary bg-hero h-svh text-white lg:px-32 xls:px-16 sm:px-8  md:px-12 px-4 ">
+      <div className="lg:bg-hero-gradient dark:bg-primary bg-hero h-svh text-white lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4 ">
        <Header />
         <Hero />
       

@@ -47,7 +47,7 @@ export default  function WomenClothingCard({ searchParams }) {
   console.log(allProducts)
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true} >
-    <Header className="lg:px-24 md:px-16 sm:px-8 px-4" />
+    <Header className="lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4" />
       <main className="lg:px-24 md:px-16 sm:px-8 px-4 my-10 mt-32">
         {/* <h1>{searchParams}</h1> */}
         {/* <h1 className="font-bold text-3xl mb-6">Explore Our Products</h1> */}

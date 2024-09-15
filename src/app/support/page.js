@@ -6,7 +6,7 @@ export default function page() {
 
   return (
     <div>
-        <Header className="lg:px-24 md:px-16 sm:px-8 px-4"/>
+        <Header className="lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4"/>
         <Support />
     </div>
   )
