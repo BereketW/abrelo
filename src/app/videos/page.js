@@ -31,8 +31,8 @@ export default function Page() {
   return (
     <div className="lg:px-24 md:px-16 sm:px-8 px-4">
         <Header className=""/>
-        <VideosHeader />
-        <div className='grid grid-cols-12 gap-y-14  sm:gap-x-[30px]'>
+        {/* <VideosHeader /> */}
+        <div className='grid mt-16 grid-cols-12 gap-y-14  sm:gap-x-[30px]'>
         {videos.map((video) => (
               <div key={video.id.videoId} className="col-span-full sm:col-span-6 lg:col-span-3">
                 <iframe

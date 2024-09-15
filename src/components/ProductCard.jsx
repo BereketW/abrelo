@@ -60,7 +60,7 @@ export default function ProductCard({ product, children }) {
       data-aos="zoom-out-up"
       className="group  flex flex-col border rounded-xl p-4 transition-all cursor-pointer"
     >
-      <div className="h-52 relative overflow-hidden w-full self-center transition-all ease-in-out mb-3">
+      <div className="h-52 relative overflow-hidden w-full  transition-all ease-in-out mb-3">
         <div className="p-4">
           {product.image ? (
             <Link href={`shop/${product.id}`}>

@@ -31,24 +31,24 @@ export default  function WomenClothingCard({ searchParams }) {
   const [currentPage, setCurrentPage] = useState(1)
   useEffect(()=>{
     async function getProducts(){
-      const response = await fetch(`http://localhost:8000/api/products?page=${currentPage}&limit=12`)
+      const response = await fetch(`https://abrelo-server.vercel.app/api/products?page=${currentPage}&limit=12`)
     
       
       const data = await response.json()
-      
+      console.log(data)
 
       setProducts(data.products)
     }
     getProducts()
-  })
+  },[])
   console.log(allProducts)
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true} >
     <Header className="lg:px-24 md:px-16 sm:px-8 px-4" />
-      <main className="px-24 my-10 mt-32">
+      <main className="lg:px-24 md:px-16 sm:px-8 px-4 my-10 mt-32">
         {/* <h1>{searchParams}</h1> */}
         {/* <h1 className="font-bold text-3xl mb-6">Explore Our Products</h1> */}
-        <div className="grid grid-cols-4 gap-10">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-10">
           {allProducts.map((product) => {
             // const itemExist = itemsViewed.find(
             //   (cart) => cart.id === product.category.id

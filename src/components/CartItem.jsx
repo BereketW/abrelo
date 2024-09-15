@@ -6,7 +6,7 @@ import CountQuantity from "./CountQuantity";
 import Rating from "./Rating";
 import { useCart } from "@/store/cart";
 import { usePathname } from "next/navigation";
-export default function CartItem({ product }) {
+export default function CartItem({ product, flex=false }) {
  const pathname = usePathname()
   const { removeFromCart, cartProducts } = useCart();
   console.log(cartProducts)
@@ -21,13 +21,15 @@ export default function CartItem({ product }) {
         <h6 className="text-sm">{product?.title.slice(0, 20)}</h6>
         <small>${product?.price}</small>
       </div>
+      <CountQuantity product={product} />
       <button
-        className="absolute top-0 right-3"
+        className={`${!flex ? "absolute top-0 right-3"
+          :""
+        }`}
         onClick={() => removeFromCart(product.id)}
       >
-        <DeleteIcon className="h-6 dark:hover:text-hero w-6 absolute dark:bg-inherit dark:text-primary-p -top-3 right-1 bg-white hover:text-hero transition-all duration-200 " />
+      <DeleteIcon className={`h-6 dark:hover:text-hero ${!flex ?"absolute  -top-3 right-1":" " } w-6  dark:bg-inherit dark:text-primary-p bg-white hover:text-hero transition-all duration-200`}  />
       </button>
-      <CountQuantity product={product} />
     </div>
   );
 }
