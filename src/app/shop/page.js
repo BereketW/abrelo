@@ -18,6 +18,8 @@ import ProductCard from "@/components/ProductCard";
 import Header from "@/components/Header";
 import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import { ThemeProvider } from "next-themes";
+import { Suspense } from "react";
+import Loading from "./loading";
 export default  function WomenClothingCard({ searchParams }) {
   // console.log(searchParams);
   // const parameter = useSearchParams();
@@ -55,9 +57,11 @@ export default  function WomenClothingCard({ searchParams }) {
             // );
             // isLoading && <Loader key={product.category.id} />;
             return (
-              <ProductCard key={product.id} product={product}>
+              <Suspense  key={product.id} fallback={<Loading />}>
+                <ProductCard product={product}>
                 <Rating rating={product?.rating ?? 4} />
               </ProductCard>
+              </Suspense>
             );
           })}
           
