@@ -391,7 +391,7 @@ export default function About(){
           </div>
         </div>
       </section>
-      <section className="grid grid-cols-12 gap-x-5 gap-y-10 md:gap-x-6 lg:gap-x-[30px]">
+      {/* <section className="grid grid-cols-12 gap-x-5 gap-y-10 md:gap-x-6 lg:gap-x-[30px]">
         <div className="col-span-full">
           <hgroup className="flex flex-col-reverse gap-y-2 md:gap-y-3 mb-6 md:mb-28">
             <h2 className="text-2xl font-bold leading-none text-primary dark:text-white md:text-3xl lg:text-4xl lg:tracking-tighter xl:text-5xl">
@@ -459,7 +459,7 @@ export default function About(){
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   </div>
 </main>

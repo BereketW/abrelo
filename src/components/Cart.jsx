@@ -31,7 +31,7 @@ export default function Cart({display, setDisplay}) {
           <h1 className="dark:text-white text-xl text-black font-bold">
             Cart Review
           </h1>
-          <button onClick={()=>setDisplay(false)} className='w-9  border font-bold flex items-center justify-center dark:border-white dark:border-2 border-black h-9 rounded-full '><RiCloseLine /></button>
+          <button onClick={()=>setDisplay(false)} className='w-9  border font-bold flex items-center justify-center dark:border-white  dark:border-2 border-black h-9 rounded-full '><RiCloseLine /></button>
         </span>
         <div className="grid gap-4 max-h-[350px] overflow-y-scroll oveflow-x-hidden w-full py-4 mt-10 ">
           {cartProducts.length > 0 ? (

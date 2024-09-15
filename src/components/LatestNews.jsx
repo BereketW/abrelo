@@ -1,5 +1,17 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
+import Blog from "./Blog";
 export default function LatestNews() {
+  const [news, setNews] = useState([])
+  useEffect(()=>{
+      async function getNews(){
+          const res = await fetch("https://saurav.tech/NewsAPI/top-headlines/category/entertainment/in.json")
+          const data = await res.json()
+          setNews(data.articles)
+          articles.length = 4
+      }
+      getNews()
+  },[])
   return (
     <section class="py-14 md:py-32 md:px-16 sm:px-8 px-4 lg:py-44 xl:py-48">
       <div class="container">
@@ -29,37 +41,7 @@ export default function LatestNews() {
             </a>
           </div>
         </div>
-        <div class="grid mt-10 grid-cols-12 gap-y-7 sm:gap-[30px]">
-          <div class="col-span-full sm:col-span-6 lg:col-span-4">
-            <figure class="group overflow-hidden bg-gray-900">
-              <a href="_yt1-single.html">
-                <img
-                  class="aspect-[37/24] h-full w-full max-w-full object-cover duration-300 group-hover:scale-110 group-hover:opacity-75"
-                  src="https://valkivid.dan-fisher.dev/assets/img/yt1/samples/post-img-1-370x240.jpg"
-                  alt="Next month I’ll be unboxing the exclusive “Last of Them II” deluxe version"
-                />
-              </a>
-            </figure>
-            <div class="relative -mt-20 mr-8 lg:mr-10">
-              <div class="inline-flex bg-hero px-2 py-[6px] text-xs font-bold uppercase leading-none text-white">
-                Previews
-              </div>
-              <div class="bg-white dark:bg-gray-800 p-6">
-                <h2 class="mb-4 text-xl font-bold leading-6 lg:tracking-tighter">
-                  <a
-                    href="_yt1-single.html"
-                    class="text-primary transition-colors hover:text-accent dark:text-white dark:hover:text-accent"
-                  >
-                    Next month I’ll be unboxing the exclusive “Last of Them II”
-                    deluxe version
-                  </a>
-                </h2>
-                <div class="text-sm">March 18, 2022</div>
-              </div>
-            </div>
-          </div>
-         
-        </div>
+      <Blog news = {news} />
       </div>
     </section>
   );

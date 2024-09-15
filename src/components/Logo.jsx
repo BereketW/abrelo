@@ -6,35 +6,50 @@ import { usePathname } from "next/navigation";
 
 export default function Logo() {
   const { theme } = useTheme();
-  const pathname = usePathname()
+  const pathname = usePathname();
 
-  return (
-    <div>
-      <Link href="/" className=" overflow-hidden h-[60px] flex gap-3 items-center font-bold ">
-        {theme === "dark" ? (
-          <Image
-            src="/assets/logo.png"
-            width={200}
-            height={100}
-            alt="dark-mode-logo"
-            className="object-cover h-1/2"
-          />
-        ) : theme === 'light' && pathname === "/" ? (
-          <Image
-            src="/assets/logo.png"
-            width={200}
-            height={100}
-            alt="light-mode-logo"
-            className="object-cover"
-          />
-        ):(<Image
-          src="/assets/logo-dark.png"
+  // Determine which logo to display
+ 
+  if(theme === "light")return (
+   
+      <Link href="/" className="overflow-hidden h-[60px] flex gap-3 items-center font-bold">
+        <Image
+          src={'/assets/logo-dark.png'}
           width={200}
           height={200}
-          alt="light-mode-logo"
-          className="object-cover"
-        />)}
+          alt="site-logo"
+          className="object-cover transition-all duration-300 ease-in-out"
+        />
       </Link>
-    </div>
+    
   );
+  else if(pathname === "/" && theme === "light" || "dark") return (
+   
+    <Link href="/" className="overflow-hidden h-[60px] flex gap-3 items-center font-bold">
+      <Image
+        src={'/assets/logo.png'}
+        width={200}
+        height={200}
+        alt="site-logo"
+        className="object-cover transition-all duration-300 ease-in-out"
+      />
+    </Link>
+
+  
+);
+  else return (
+   
+    <Link href="/" className="overflow-hidden h-[60px] flex gap-3 items-center font-bold">
+      <Image
+        src={'/assets/logo.png'}
+        width={200}
+        height={200}
+        alt="site-logo"
+        className="object-cover transition-all duration-300 ease-in-out"
+      />
+    </Link>
+
+  
+);
+  
 }
