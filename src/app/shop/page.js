@@ -20,6 +20,7 @@ import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
 import Loading from "./loading";
+import Skeleton from "react-loading-skeleton";
 export default  function WomenClothingCard({ searchParams }) {
   // console.log(searchParams);
   // const parameter = useSearchParams();
@@ -51,19 +52,27 @@ export default  function WomenClothingCard({ searchParams }) {
         {/* <h1>{searchParams}</h1> */}
         {/* <h1 className="font-bold text-3xl mb-6">Explore Our Products</h1> */}
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-10">
-          {allProducts.map((product) => {
-            // const itemExist = itemsViewed.find(
-            //   (cart) => cart.id === product.category.id
-            // );
-            // isLoading && <Loader key={product.category.id} />;
-            return (
-              <Suspense  key={product.id} fallback={<Loading />}>
-                <ProductCard product={product}>
-                <Rating rating={product?.rating ?? 4} />
-              </ProductCard>
-              </Suspense>
-            );
-          })}
+        {allProducts.map((product) => {
+  return (
+    <div style={{ width: "300px", height: "400px" }} key={product.id}>
+      <Suspense
+        fallback={
+          <Skeleton
+            width="100%"
+            height="100%"
+            baseColor="#e0e0e0"
+            highlightColor="#f0f0f0"
+            style={{ borderRadius: "10px" }} // match your card's border-radius
+          />
+        }
+      >
+        <ProductCard product={product}>
+          <Rating rating={product?.rating ?? 4} />
+        </ProductCard>
+      </Suspense>
+    </div>
+  );
+})}
           
         </div>
         <div className="flex gap-8 my-20 items-center justify-center">

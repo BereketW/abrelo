@@ -35,8 +35,8 @@ export default function ProductDetail({ singleProduct, children }) {
   const { count } = useCount();
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
-    <div className="my-24 px-24">
-      <div className="flex w-full gap-10 justify-between">
+    <div className="my-24 lg:px-24 md:px-16 sm:px-8 px-4">
+      <div className="lg:flex  w-full gap-10 justify-between">
         <div className=" w-1/2 h-2/6">
           <Swiper
             loop={true}
