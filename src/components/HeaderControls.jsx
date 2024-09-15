@@ -150,7 +150,7 @@ const handleThemeChange = (newTheme) => {
        
         <BsCart2 size={28}/>
       </Link>
-      <button onClick={()=>setHidden(false)} className="lg:hidden px-4"><MenuIcon /></button>
+      <button onClick={()=>setHidden(false)} className="lg:hidden outline-none px-4"><MenuIcon /></button>
     </div>
   );
 }

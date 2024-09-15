@@ -14,7 +14,7 @@ export default function Page(){
         getNews()
     },[])
     return(
-        <ThemeProvider attribute="class" enableSystem defaultTheme="light"><Header className="text-primary dark:bg-inherit  sticky top-0 bg-white lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4"/>
+        <ThemeProvider className=" lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4" attribute="class" enableSystem defaultTheme="light"><Header />
 
         <Blog news={news}/>
         </ThemeProvider>

@@ -1,4 +1,6 @@
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function NewVideos() {
@@ -11,7 +13,7 @@ export default function NewVideos() {
             src="https://i.ibb.co/NyDhLpC/Screenshot-from-2024-07-22-22-50-17.png"
             alt="Video Preview"
           /> */}
-          <Image src={"/assets/abrelo-new.jpg"} height={100} width={200} alt="new-video" className="w-full object-cover h-[450px] rounded" />
+          <img src={"/assets/abrelo-new-video.png"} height={100} width={200} alt="new-video" className="w-full object-cover h-[450px] rounded" />
         </div>
         <div className="md:w-1/3 lg:w-1/3 ">
           <div className="mb-8 ">
@@ -58,17 +60,17 @@ export default function NewVideos() {
                 keep them coming!
               </p>
             </div>
-            <a
+            <Link
               className="inline-flex items-center gap-x-3 text-xs font-bold uppercase text-primary md:text-sm"
-              href="#"
+              href="/videos"
             >
-              <span className="relative inline-flex h-[18px] w-[18px] items-center justify-center rounded-full border-2 border-primary">
-                <svg role="img" className="h-[8px] w-[8px] fill-primary"></svg>
+              <span className="relative inline-flex h-[18px] w-[18px] items-center dark:text-white justify-center rounded-full border-2 border-primary">
+                <ChevronRight />
               </span>
               <span className="transition-colors dark:text-white hover:text-accent">
                 See All Videos
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

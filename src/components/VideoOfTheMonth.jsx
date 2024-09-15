@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { PlayIcon } from "lucide-react";
 
 export default function VideoOfTheMonth() {
     const {videos, setVideos} = useState(null)
@@ -49,9 +50,9 @@ export default function VideoOfTheMonth() {
   return (
     <div className={`${pathname === "/support" ? "hidden":""} relative isolate -mb-20`}>
       <div className="container ">
-        <div className="lg:pl-36 md:pl-16 sm:pl-8 pl-2 relative grid grid-cols-12 gap-x-7 bg-hero text-white">
+        <div className="lg:pl-24 md:pl-16 sm:pl-8 pl-1 relative grid grid-cols-12 gap-x-7 bg-hero text-white">
           <div className="col-span-full flex flex-col justify-center gap-y-4 py-8 px-5 md:col-span-5 md:gap-y-6 md:py-10 md:px-0 lg:col-span-5 lg:py-0 xl:col-span-3">
-            <div className="uppercase tracking-tighter">Unbox Spotlight</div>
+            <div className="uppercase tracking-tighter">Abrelo Spotlight</div>
             <div className="text-4xl font-bold tracking-tight md:mb-5 md:text-5xl md:leading-[0.9em]">
               {videos}
               Video of the Month!
@@ -62,20 +63,15 @@ export default function VideoOfTheMonth() {
               href="https://www.youtube.com/watch?v=XE0fU9PCrWE"
               className="glightbox group relative block h-full overflow-hidden bg-gray-900 md:-ml-7"
             >
-              <Image
-                src="/assets/abrelo-reacting.png"
+              <img
+                src="/assets/abrish-new.jpg"
                 alt="Video of the Month"
                 width={200}
                 height={100}
                 className="w-full h-[300px] object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-75"
               />
-              <span className="absolute top-1/2 left-1/2 flex aspect-square w-[60px] -translate-x-2/4 -translate-y-2/4 items-center justify-center rounded-full bg-accent">
-                <svg
-                  role="img"
-                  className="mr-[-3px] h-[22px] w-[18px] fill-white"
-                >
-                  <use xlinkHref="/assets/img/yt1/sprite.svg#play"></use>
-                </svg>
+              <span className="absolute top-1/2 left-1/2 flex bg-hero aspect-square w-[60px] -translate-x-2/4 -translate-y-2/4 items-center justify-center rounded-full ">
+<PlayIcon />
               </span>
             </a>
           </div>

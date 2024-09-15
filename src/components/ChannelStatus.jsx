@@ -44,7 +44,7 @@ export default function ChannelStatus() {
                 src="assets/img/yt1/samples/user-1-40x40.jpg"
                 alt=""
               /> */}
-              <Image src={"/assets/abrelo-about.png"} alt="abrelo" height={8} width={8} className="w-10 h-10 shrink-0 self-start rounded-full md:w-10"
+              <img src={"/assets/abrelo-new.jpg"} alt="abrelo" height={8} width={8} className="w-10 h-10 shrink-0 object-cover self-start rounded-full md:w-10"
                 />
               <div className="flex-1 text-primary dark:text-white">
                 <Link href={"https://www.youtube.com/@abrelohd"} className="font-bold leading-none text-primary dark:text-white md:text-lg md:leading-snug">

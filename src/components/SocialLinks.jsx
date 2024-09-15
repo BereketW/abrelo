@@ -7,23 +7,23 @@ import {
   BsTiktok,
   BsTwitterX,
 } from "react-icons/bs";
-export default function SocialLinks({className}){
+export default function SocialLinks({className, footer=false}){
 	return(
 	<div className={`${className} `}>
         <Link href={"https://www.instagram.com/abrelohd/"}  target="blank">
-          <BsInstagram  className="lg:scale-[2.3] xl:scale-[2.6] z-50  md:scale-[2]:sm:scale=[1.6] scale-[1.3]" />
+          <BsInstagram  className={!footer && "lg:scale-[2.3] xl:scale-[2.6] z-50  md:scale-[2]:sm:scale=[1.6] scale-[1.3]"} />
         </Link>
         <Link href={"https://x.com/iam_abrelo"} target="blank">
-          <BsTwitterX className="lg:scale-[2.3] xl:scale-[2.6] md:scale-[2]:sm:scale=[1.6] scale-[1.3]" />
+          <BsTwitterX className={!footer && "lg:scale-[2.3] xl:scale-[2.6] z-50  md:scale-[2]:sm:scale=[1.6] scale-[1.3]"} />
         </Link>
         <Link href={"https://facebook.com/AbreloHD"} target="blank">
-          <BsFacebook className="lg:scale-[2.3] xl:scale-[2.6] md:scale-[2]:sm:scale=[1.6] scale-[1.3]" />
+          <BsFacebook className={!footer && "lg:scale-[2.3] xl:scale-[2.6] z-50  md:scale-[2]:sm:scale=[1.6] scale-[1.3]"} />
         </Link>
         <Link href={"https://t.me/AbreloHd"} target="blank">
-          <BsTelegram className="lg:scale-[2.3] xl:scale-[2.6] md:scale-[2]:sm:scale=[1.6] scale-[1.3]" />
+          <BsTelegram className={!footer && "lg:scale-[2.3] xl:scale-[2.6] z-50  md:scale-[2]:sm:scale=[1.6] scale-[1.3]"} />
         </Link>
         <Link href={"https://tiktok.com/@abrelo_hd"} target="blank">
-          <BsTiktok className="lg:scale-[2.3] xl:scale-[2.6] md:scale-[2]:sm:scale=[1.6] scale-[1.3]" />
+          <BsTiktok className={!footer && "lg:scale-[2.3] xl:scale-[2.6] z-50  md:scale-[2]:sm:scale=[1.6] scale-[1.3]"} />
         </Link>
       </div>
       )

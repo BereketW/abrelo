@@ -5,17 +5,17 @@ import React, { useEffect, useState } from "react";
 
 import { useQuery } from "react-query";
 import SocialLinks from "./SocialLinks"
+import { FaYoutube } from "react-icons/fa";
 
 export default function Hero() {
   return (
     <div className=" w-full flex gap-10 mt-24 lg:-mt-16 lg:items-center     h-full -z-10 ">
      <SocialLinks className="flex  flex-col lg:gap-14  lg:justify-between md:gap-6 sm:gap-4 gap-5 z-50   "/>
-      <div className=" lg:pl-12  ">
-        <img
-          class="mt-1 mb-4 hidden  transition-opacity duration-500 group-[.vv-slide-played]:opacity-100 group-[.swiper-slide-active:not(.vv-slide-played)]:opacity-100 lg:block"
-          src="https://valkivid.dan-fisher.dev/assets/img/yt1/youtube.svg"
-          alt="YouTube Logo"
-        />
+      <div className="pl-8 lg:pl-12  ">
+          <div  className="mt-1 mb-4 hidden  transition-opacity duration-500 group-[.vv-slide-played]:opacity-100 group-[.swiper-slide-active:not(.vv-slide-played)]:opacity-100 lg:block"
+         >
+          <FaYoutube size={40}/>
+         </div>
         <h2 className="text-[100px] mb-5 flex flex-col  font-bold leading-none lg:items-start">
           <span className="text-2xl leading-none tracking-tighter transition-opacity delay-[400ms] duration-500 group-[.vv-slide-played]:opacity-100 group-[.swiper-slide-active:not(.vv-slide-played)]:opacity-100 lg:text-5xl xl:text-6.5xl">
             {"Abrelo HD's"}

@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Blog({news}) {
+export default function Blog({news, cut=false}) {
  
-
+       if(cut)news.length=3;
   return (
-    <div className="grid lg:px-24 md:px-16 sm:px-8 px-4 lg:mt-24 mt-12 grid-cols-12 gap-y-7 sm:gap-[30px]">
+    <div className="grid  lg:mt-24 mt-12 grid-cols-12 gap-y-7 sm:gap-[30px]">
       {news.map((post) => (
         <div
           key={post.title}
