@@ -23,7 +23,7 @@ export default function RootLayout({children}) {
         </div>
 
         <div className='w-5/6 h-full self-end justify-self-end overflow-scroll fixed top-0 right-0  bg-[#f9f7f7]'>
-            <div className='w-full sticky top-0 py-10 px-8 bg-[#262d34]'>
+            <div className='w-full sticky top-0 z-50 py-10 px-8 bg-[#262d34]'>
               <nav className='flex justify-between items-center '>
                 <h1 className='text-lg text-white'>Welcome</h1>
                 <ul className='flex gap-4 text-[#9097a7]'>

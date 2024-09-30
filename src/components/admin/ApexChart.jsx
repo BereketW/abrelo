@@ -146,7 +146,7 @@ const ApexChart = () => {
   });
 
   return (
-    <div>
+    <div className='w-1/2'>
       <div id="chart">
         <ReactApexChart
           options={chartData.options}
