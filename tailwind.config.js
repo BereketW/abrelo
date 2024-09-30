@@ -23,6 +23,7 @@ module.exports = {
     },
     extend: {
       backgroundColor: {
+        "light":"rgb(238, 242, 247)",
         "hero": "rgb(255 61 84 / 1)",
         "primary": "rgb(59 57 88 / 1)",
         "videos-dark":"rgb(41 41 61 / 1)",

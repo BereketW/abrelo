@@ -21,7 +21,7 @@ export default function Header({className=''}) {
   
   
   return (
-    <header id="home" className="">
+    <header id="home" className={`${pathname==="/admin" ? "hidden":""}`}>
       <nav className={`relative ${className}    z-50 flex min-h-[64px] dark:text-white items-center justify-between py-1  lg:min-h-[90px] lg:py-4`}>
         <Logo />
         {/* <ul className=" lg:p-0  absolute lg:static tranlate-x-[120%] lg:h-auto h-svh z-50 top-0 p-12 rounded lg:w-auto w-full  lg:text-white text-primary lg:bg-inherit bg-white lg:gap-x-7 xl:gap-x-10 text-sm flex-cols font-bold lg:flex"> */}

@@ -23,8 +23,8 @@ export default function RootLayout({ children }) {
        
         {/* Client Component */}
         {children}
-        {!pathname && <><VideoOfTheMonth />
-        <Footer /></>}
+         <VideoOfTheMonth />
+        <Footer />
       </body>
     </html>
   );

@@ -1,159 +1,137 @@
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 export default function Orders() {
   return (
-    <div className="col w-full flex-1">
+    <div className="col w-full  my-8">
       <div className="card">
-        <div className="card-body">
-          <div className="d-flex align-items-center justify-content-between">
+        <div className="p-6 mb-3 rounded bg-white">
+          <div className="flex items-center justify-between">
             <h4 className="card-title">Recent Orders</h4>
-
-            <a href="#!" className="btn btn-sm btn-soft-primary">
-              <i className="bx bx-plus me-1"></i>Create Order
-            </a>
+            <Link
+              href="#!"
+              className="text-sm p-2  text-hero rounded bg-opacity-35 bg-[#ff3d5430]"
+            >
+              <button>+ Create Order</button>
+            </Link>
           </div>
         </div>
 
         <div className="table-responsive table-centered">
-          <table className="table mb-0">
-            <thead className="bg-light bg-opacity-50">
-              <tr>
-                <th className="ps-3">Order ID.</th>
-                <th>Date</th>
-                <th>Product</th>
-                <th>Customer Name</th>
-                <th>Email ID</th>
-                <th>Phone No.</th>
-                <th>Address</th>
-                <th>Payment Type</th>
-                <th>Status</th>
+          <table className="table text-sm w-full mb-0">
+            <thead className="bg-light text-sm bg-opacity-50">
+              <tr className="p-2">
+                <th className="p-2">Order ID.</th>
+                <th className="p-2">Date</th>
+                <th className="p-2">Product</th>
+                <th className="p-2">Customer Name</th>
+                <th className="p-2">Email ID</th>
+                <th className="p-2">Phone No.</th>
+                <th className="p-2">Address</th>
+                <th className="p-2">Payment Type</th>
+                <th className="p-2">Status</th>
               </tr>
             </thead>
 
-            <tbody>
-              <tr>
-                <td className="ps-3">
-                  <a href="order-detail.html">#RB5625</a>
-                </td>
-                <td>29 April 2024</td>
-                <td>
-                  <img
-                    src="assets/images/products/product-1(1).png"
-                    alt="product-1(1)"
-                    className="img-fluid avatar-sm"
-                  />
-                </td>
-                <td>
-                  <a href="#!">Anna M. Hines</a>
-                </td>
-                <td>anna.hines@mail.com</td>
-                <td>(+1)-555-1564-261</td>
-                <td>Burr Ridge/Illinois</td>
-                <td>Credit Card</td>
-                <td>
-                  <i className="bx bxs-circle text-success me-1"></i>Completed
-                </td>
-              </tr>
-              <tr>
-                <td className="ps-3">
-                  <a href="order-detail.html">#RB9652</a>
-                </td>
-                <td>25 April 2024</td>
-                <td>
-                  <img
-                    src="assets/images/products/product-4.png"
-                    alt="product-4"
-                    className="img-fluid avatar-sm"
-                  />
-                </td>
-                <td>
-                  <a href="#!">Judith H. Fritsche</a>
-                </td>
-                <td>judith.fritsche.com</td>
-                <td>(+57)-305-5579-759</td>
-                <td>SULLIVAN/Kentucky</td>
-                <td>Credit Card</td>
-                <td>
-                  <i className="bx bxs-circle text-success me-1"></i>Completed
-                </td>
-              </tr>
-              <tr>
-                <td className="ps-3">
-                  <a href="order-detail.html">#RB5984</a>
-                </td>
-                <td>25 April 2024</td>
-                <td>
-                  <img
-                    src="assets/images/products/product-5.png"
-                    alt="product-5"
-                    className="img-fluid avatar-sm"
-                  />
-                </td>
-                <td>
-                  <a href="#!">Peter T. Smith</a>
-                </td>
-                <td>peter.smith@mail.com</td>
-                <td>(+33)-655-5187-93</td>
-                <td>Yreka/California</td>
-                <td>Pay Pal</td>
-                <td>
-                  <i className="bx bxs-circle text-success me-1"></i>Completed
-                </td>
-              </tr>
-              <tr>
-                <td className="ps-3">
-                  <a href="order-detail.html">#RB3625</a>
-                </td>
-                <td>21 April 2024</td>
-                <td>
-                  <img
-                    src="assets/images/products/product-6.png"
-                    alt="product-6"
-                    className="img-fluid avatar-sm"
-                  />
-                </td>
-                <td>
-                  <a href="#!">Emmanuel J. Delcid</a>
-                </td>
-                <td>emmanuel.delicid@mail.com</td>
-                <td>(+30)-693-5553-637</td>
-                <td>Atlanta/Georgia</td>
-                <td>Pay Pal</td>
-                <td>
-                  <i className="bx bxs-circle text-primary me-1"></i>Processing
-                </td>
-              </tr>
-              <tr>
-                <td className="ps-3">
-                  <a href="order-detail.html">#RB8652</a>
-                </td>
-                <td>18 April 2024</td>
-                <td>
-                  <img
-                    src="assets/images/products/product-1(2).png"
-                    alt="product-1(2)"
-                    className="img-fluid avatar-sm"
-                  />
-                </td>
-                <td>
-                  <a href="#!">William J. Cook</a>
-                </td>
-                <td>william.cook@mail.com</td>
-                <td>(+91)-855-5446-150</td>
-                <td>Rosenberg/Texas</td>
-                <td>Credit Card</td>
-                <td>
-                  <i className="bx bxs-circle text-primary me-1"></i>Processing
-                </td>
-              </tr>
+            <tbody className="text-[#8686a7]">
+              {[
+                {
+                  id: "#RB5625",
+                  date: "29 April 2024",
+                  product: "product-1(1)",
+                  customer: "Anna M. Hines",
+                  email: "anna.hines@mail.com",
+                  phone: "(+1)-555-1564-261",
+                  address: "Burr Ridge/Illinois",
+                  payment: "Credit Card",
+                  status: "Completed",
+                  statusIcon: "success",
+                },
+                {
+                  id: "#RB9652",
+                  date: "25 April 2024",
+                  product: "product-4",
+                  customer: "Judith H. Fritsche",
+                  email: "judith.fritsche@mail.com",
+                  phone: "(+57)-305-5579-759",
+                  address: "SULLIVAN/Kentucky",
+                  payment: "Credit Card",
+                  status: "Completed",
+                  statusIcon: "success",
+                },
+                {
+                  id: "#RB5984",
+                  date: "25 April 2024",
+                  product: "product-5",
+                  customer: "Peter T. Smith",
+                  email: "peter.smith@mail.com",
+                  phone: "(+33)-655-5187-93",
+                  address: "Yreka/California",
+                  payment: "Pay Pal",
+                  status: "Completed",
+                  statusIcon: "success",
+                },
+                {
+                  id: "#RB3625",
+                  date: "21 April 2024",
+                  product: "product-6",
+                  customer: "Emmanuel J. Delcid",
+                  email: "emmanuel.delicid@mail.com",
+                  phone: "(+30)-693-5553-637",
+                  address: "Atlanta/Georgia",
+                  payment: "Pay Pal",
+                  status: "Processing",
+                  statusIcon: "primary",
+                },
+                {
+                  id: "#RB8652",
+                  date: "18 April 2024",
+                  product: "product-1(2)",
+                  customer: "William J. Cook",
+                  email: "william.cook@mail.com",
+                  phone: "(+91)-855-5446-150",
+                  address: "Rosenberg/Texas",
+                  payment: "Credit Card",
+                  status: "Processing",
+                  statusIcon: "primary",
+                },
+              ].map((order) => (
+                <tr key={order.id} className="border-b border-inherit bg-white">
+                  <td className="px-2 py-3.5">
+                    <a href="order-detail.html">{order.id}</a>
+                  </td>
+                  <td className="px-2 py-3.5">{order.date}</td>
+                  <td className="px-2 py-3.5">
+                    <img
+                      src={`https://techzaa.getappui.com/larkon/admin/assets/images/products/${order.product}.png`}
+                      alt={order.product}
+                      className="max-w-full w-[2.25rem] h-[2.25rem]"
+                    />
+                  </td>
+                  <td className="px-2 py-3.5">
+                    <a href="#!">{order.customer}</a>
+                  </td>
+                  <td className="px-2 py-3.5">{order.email}</td>
+                  <td className="px-2 py-3.5">{order.phone}</td>
+                  <td className="px-2 py-3.5">{order.address}</td>
+                  <td className="px-2 py-3.5">{order.payment}</td>
+                  <td className="px-2 py-3.5">
+                    <i
+                      className={`bx bxs-circle text-${order.statusIcon} me-1`}
+                    ></i>
+                    {order.status}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
 
-        <div className="card-footer border-top">
-          <div className="row g-3">
-            <div className="col-sm">
-              <div className="text-muted">
+        <div className="p-4 bg-white rounded border-t">
+          <div className="flex items-center justify-between">
+            <div className="">
+              <div className="flex gap-2">
                 Showing
                 <span className="fw-semibold">5</span>
                 of
@@ -162,34 +140,14 @@ export default function Orders() {
               </div>
             </div>
 
-            <div className="col-sm-auto">
-              <ul className="pagination m-0">
-                <li className="page-item">
-                  <a href="#" className="page-link">
-                    <i className="bx bx-left-arrow-alt"></i>
-                  </a>
-                </li>
-                <li className="page-item active">
-                  <a href="#" className="page-link">
-                    1
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a href="#" className="page-link">
-                    2
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a href="#" className="page-link">
-                    3
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a href="#" className="page-link">
-                    <i className="bx bx-right-arrow-alt"></i>
-                  </a>
-                </li>
-              </ul>
+            <div className="">
+              <div className="flex text-sm border rounded-3xl">
+                <button className="w-8  flex items-center border-inherit hover:bg-hero transition-all duration-200 justify-center h-9"><ArrowLeft size={15}/></button>
+                <button className="w-8 flex items-center   bg-hero justify-center border-l h-9">1</button>
+                <button className="w-8 flex items-center hover:bg-hero transition-all duration-200 justify-center border-l h-9">2</button>
+                <button className="w-8 flex items-center hover:bg-hero transition-all duration-200 justify-center border-l h-9">3</button>
+                <button className="w-8 flex items-center hover:bg-hero transition-all duration-200 justify-center border-l h-9"><ArrowRight size={15}/></button>
+              </div>
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div  className='p-4 '>
+    <div  className='p-4 w-full'>
       <div className='flex gap-4'>
       <div className="w-[590px] text-[#5d7186] flex gap-2 flex-wrap items-start">
         <StatusCard />
