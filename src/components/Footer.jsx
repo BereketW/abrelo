@@ -22,7 +22,7 @@ export default function Footer() {
   }, [])
 
   return (
-    <footer id="site-footer" className="dark " >
+    <footer id="footer" className="dark " >
       <div class="px-2 lg:px-36 md:px-16 sm:px-8 xs:px-3 bg-gray-900 py-24 pt-44 leading-8">
         <div class="container">
           <div class="grid grid-cols-12 gap-y-12 gap-x-7">

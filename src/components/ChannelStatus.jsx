@@ -1,24 +1,46 @@
-"use client"
-import React, { useEffect, useState } from "react";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import SvgMapPath from "./SvgMapPath";
 import Image from "next/image";
 import numeral from "numeral";
 import Link from "next/link";
-
+import CountUp from "react-countup";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+// import { useGSAP } from "@gsap/react";
+gsap.registerPlugin(ScrollTrigger);
 export default function ChannelStatus() {
-  const [subscribers, setSubscribers] = useState();
-  useEffect(()=>{
-   async function getData(){
-    const response = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${process.env.NEXT_PUBLIC_CHANNEL_ID}&key=${process.env.NEXT_PUBLIC_API_KEY}`)
-    const data = await response.json()
-    console.log(data)
-    const sub = data.items[0].statistics.subscriberCount;
-    setSubscribers(sub)
-   }
-   getData()
-  }, [])
-  console.log(subscribers);
-  
+  const [subscribers, setSubscribers] = useState(0);
+  const [startCounting, setStartCounting] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    // Initialize ScrollTrigger
+    gsap.to(sectionRef.current, {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top center',
+        once:true,
+        onEnter: () => setStartCounting(true), // Trigger counting on enter
+        // onLeaveBack: () => setStartCounting(false), // Optional: Reset if scrolling back up
+      },
+    });
+  }, []);
+  console.log(sectionRef)
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch(
+        `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${process.env.NEXT_PUBLIC_CHANNEL_ID}&key=${process.env.NEXT_PUBLIC_API_KEY}`
+      );
+      const data = await response.json();
+      console.log(data);
+      const sub = data.items[0].statistics.subscriberCount;
+      setSubscribers(sub);
+    }
+    getData();
+  }, []);
+  // console.log(subscribers);
 
   return (
     <section className="dark">
@@ -35,8 +57,9 @@ export default function ChannelStatus() {
                 </div>
               </div>
             </div>
-            <div className="text-2xl font-bold leading-none tracking-tighter text-primary dark:text-white sm:text-4xl md:text-5xl lg:text-8xl xl:text-[120px]">
-             {numeral(subscribers).format("0,0")}
+            <div ref={sectionRef} className="text-2xl font-bold leading-none tracking-tighter text-primary dark:text-white sm:text-4xl md:text-5xl lg:text-8xl xl:text-[120px]">
+              {/* {numeral(subscribers).format("0,0")} */}
+             { startCounting &&(<CountUp start={1} end={subscribers} duration={10} />)}
             </div>
             <div className="flex gap-4 md:gap-5">
               {/* <img
@@ -44,10 +67,18 @@ export default function ChannelStatus() {
                 src="assets/img/yt1/samples/user-1-40x40.jpg"
                 alt=""
               /> */}
-              <img src={"/assets/abrelo-new.jpg"} alt="abrelo" height={8} width={8} className="w-10 h-10 shrink-0 object-cover self-start rounded-full md:w-10"
-                />
+              <img
+                src={"/assets/abrelo-new.jpg"}
+                alt="abrelo"
+                height={8}
+                width={8}
+                className="w-10 h-10 shrink-0 object-cover self-start rounded-full md:w-10"
+              />
               <div className="flex-1 text-primary dark:text-white">
-                <Link href={"https://www.youtube.com/@abrelohd"} className="font-bold leading-none text-primary dark:text-white md:text-lg md:leading-snug">
+                <Link
+                  href={"https://www.youtube.com/@abrelohd"}
+                  className="font-bold leading-none text-primary dark:text-white md:text-lg md:leading-snug"
+                >
                   <span className="text-hero">@</span>abreloHd
                 </Link>
                 <div className="text-xs leading-tighter md:text-sm">
@@ -63,66 +94,16 @@ export default function ChannelStatus() {
               >
                 <SvgMapPath />
                 <circle className="fill-hero" cx="81" cy="132" r="3"></circle>
-                <circle
-                  className="fill-hero"
-                  cx="157"
-                  cy="272"
-                  r="3"
-                ></circle>
-                <circle
-                  className="fill-hero"
-                  cx="233"
-                  cy="234"
-                  r="3"
-                ></circle>
-                <circle
-                  className="fill-hero"
-                  cx="246"
-                  cy="221"
-                  r="3"
-                ></circle>
-                <circle
-                  className="fill-hero"
-                  cx="309"
-                  cy="362"
-                  r="3"
-                ></circle>
-                <circle
-                  className="fill-hero"
-                  cx="322"
-                  cy="451"
-                  r="3"
-                ></circle>
-                <circle
-                  className="fill-hero"
-                  cx="475"
-                  cy="119"
-                  r="3"
-                ></circle>
-                <circle
-                  className="fill-hero"
-                  cx="500"
-                  cy="183"
-                  r="3"
-                ></circle>
-                <circle
-                  className="fill-hero"
-                  cx="564"
-                  cy="170"
-                  r="3"
-                ></circle>
-                <circle
-                  className="fill-hero"
-                  cx="843"
-                  cy="221"
-                  r="3"
-                ></circle>
-                <circle
-                  className="fill-hero"
-                  cx="856"
-                  cy="413"
-                  r="3"
-                ></circle>
+                <circle className="fill-hero" cx="157" cy="272" r="3"></circle>
+                <circle className="fill-hero" cx="233" cy="234" r="3"></circle>
+                <circle className="fill-hero" cx="246" cy="221" r="3"></circle>
+                <circle className="fill-hero" cx="309" cy="362" r="3"></circle>
+                <circle className="fill-hero" cx="322" cy="451" r="3"></circle>
+                <circle className="fill-hero" cx="475" cy="119" r="3"></circle>
+                <circle className="fill-hero" cx="500" cy="183" r="3"></circle>
+                <circle className="fill-hero" cx="564" cy="170" r="3"></circle>
+                <circle className="fill-hero" cx="843" cy="221" r="3"></circle>
+                <circle className="fill-hero" cx="856" cy="413" r="3"></circle>
                 <g transform="translate(855, 122)">
                   <path
                     fill-rule="evenodd"

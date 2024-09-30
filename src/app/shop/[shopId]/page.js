@@ -33,16 +33,14 @@ export default function Home({ params }) {
   useEffect(() => {
     async function getProducts() {
       try {
-        const response = await fetch("https://abrelo-server.vercel.app/api/products");
+        const response = await fetch(`http://localhost:3001/api/products/${params.shopId}`);
         const data = await response.json();
-        setProducts(data.products);
+        setSingleProduct(data[0]);
 
         // Filter out the single product using params.shopId (assuming it's the product ID)
-        const filteredProduct = data.products.find(
-          (product) => product.id === parseInt(params.shopId) // Ensure you're comparing with the right data type
-        );
+       
 
-        setSingleProduct(filteredProduct); // Set the filtered product in state
+        // setSingleProduct(filteredProduct); // Set the filtered product in state
       } catch (error) {
         console.error("Failed to fetch products:", error);
       }

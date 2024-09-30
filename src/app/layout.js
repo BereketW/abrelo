@@ -1,11 +1,11 @@
-
-import { Poppins, Roboto } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
 import VideoOfTheMonth from "@/components/VideoOfTheMonth";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
-const poppins = Poppins({weight:['400','500', "600", "700", "800"], subsets: ["latin"] });
+import GetPathname from "@/scripts/pathname";
+
+const poppins = Poppins({ weight: ['400', '500', '600', '700', '800'], subsets: ["latin"] });
 
 export const metadata = {
   title: "Abrelo HD",
@@ -13,19 +13,18 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const pathname =  <GetPathname path={"/admin"}/>
+  console.log("Hello Pathname",pathname)
   return (
-    
-     
-        <html className="scroll-smooth">
-        <body className={poppins.className}>
+    <html className="scroll-smooth">
+      <body className={poppins.className}>
         <ToastContainer />
-        {/* <Header /> */}
-          {children}
-          <VideoOfTheMonth />
-          <Footer />
-          </body>
-      </html>
-      
-
+       
+        {/* Client Component */}
+        {children}
+        {!pathname && <><VideoOfTheMonth />
+        <Footer /></>}
+      </body>
+    </html>
   );
 }

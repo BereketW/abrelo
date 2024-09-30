@@ -27,11 +27,16 @@ module.exports = {
         "primary": "rgb(59 57 88 / 1)",
         "videos-dark":"rgb(41 41 61 / 1)",
         "channel-dark":"rgb(41 41 61 / 1)",
+        
       
         
 
         
       },
+      backgroundImage:{
+        "medium":"url('/assets/abrelo-reacting.png')"
+      },
+    
       colors: {
         "hero": "rgb(255 61 84 / 1)",
 
