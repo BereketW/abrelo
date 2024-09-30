@@ -17,22 +17,14 @@ export default function RootLayout({children}) {
   return (
     <html>
       <body className={play.className}>
-        <div className='flex  h-svh '>
-            <div className='w-[17%] shadow h-full text-[#9097a7] fixed px-6 bg-[#262d34] '>
-                <div className='flex mb-10  items-center  justify-between pt-5'>
-                  <div className='w-1/2 relative right-2 '>
-                    <Logo />
-                  </div>
-                  <BsBoxArrowRight size={30} color='gray'/>
-        
-                </div>
-                <span className='text-sm text-primary-p '>General</span>
+        <div className='flex justify-between overflow-hidden h-svh '>
+            
                <SideBar />
-            </div>
-            <div className='w-[83%] h-full self-end justify-self-end overflow-scroll fixed top-0 right-0  bg-[#f9f7f7]'>
+           
+            <div className='w-full  h-full self-end justify-self-end overflow-scroll   bg-[#f9f7f7]'>
                 <div className='w-full sticky top-0 z-50 py-10 px-8 bg-[#262d34]'>
                   <nav className='flex justify-between items-center '>
-                    <h1 className='text-lg text-white'>Welcome</h1>
+                    <h1 className='text-2xl font-bold text-white'>Welcome</h1>
                     <ul className='flex gap-4 text-[#9097a7]'>
                       <li><ThemeToggle  size={20}/></li>
                       <li><RiNotification2Fill size={20}/></li>

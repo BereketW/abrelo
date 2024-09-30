@@ -146,7 +146,7 @@ const ApexChart = () => {
   });
 
   return (
-    <div className='w-1/2 bg-white p-4'>
+    <div className='w-1/2 bg-white p-4 transition-all duration-200'>
       <div id="chart">
         <ReactApexChart
           options={chartData.options}
