@@ -1,6 +1,9 @@
 "use client"
-import React, { useState } from 'react';
-import ReactApexChart from 'react-apexcharts';
+import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic'; // To dynamically import the chart
+
+// Dynamically import ReactApexChart to avoid SSR issues
+const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 const ApexChart = () => {
   const [chartData, setChartData] = useState({
@@ -120,30 +123,30 @@ const ApexChart = () => {
       colors: ['#ff6c2f', '#22c55e'],
       tooltip: {
         shared: true,
-        // y: [
-        //   {
-        //     formatter: function (y) {
-        //       if (typeof y !== 'undefined') {
-        //         return y.toFixed(1) + 'k';
-        //       }
-        //       return y;
-        //     },
-        //   },
-        //   {
-        //     formatter: function (y) {
-        //       if (typeof y !== 'undefined') {
-        //         return y.toFixed(1) + 'k';
-        //       }
-        //       return y;
-        //     },
-        //   },
-        // ],
+        y: [
+          {
+            formatter: function (y) {
+              if (typeof y !== 'undefined') {
+                return y.toFixed(1) + 'k';
+              }
+              return y;
+            },
+          },
+          {
+            formatter: function (y) {
+              if (typeof y !== 'undefined') {
+                return y.toFixed(1) + 'k';
+              }
+              return y;
+            },
+          },
+        ],
       },
     },
   });
 
   return (
-    <div className='bg-white w-1/2 p-2 rounded'>
+    <div>
       <div id="chart">
         <ReactApexChart
           options={chartData.options}
@@ -157,4 +160,4 @@ const ApexChart = () => {
   );
 };
 
-export default ApexChart
+export default ApexChart;
