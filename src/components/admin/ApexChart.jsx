@@ -120,30 +120,30 @@ const ApexChart = () => {
       colors: ['#ff6c2f', '#22c55e'],
       tooltip: {
         shared: true,
-        y: [
-          {
-            formatter: function (y) {
-              if (typeof y !== 'undefined') {
-                return y.toFixed(1) + 'k';
-              }
-              return y;
-            },
-          },
-          {
-            formatter: function (y) {
-              if (typeof y !== 'undefined') {
-                return y.toFixed(1) + 'k';
-              }
-              return y;
-            },
-          },
-        ],
+        // y: [
+        //   {
+        //     formatter: function (y) {
+        //       if (typeof y !== 'undefined') {
+        //         return y.toFixed(1) + 'k';
+        //       }
+        //       return y;
+        //     },
+        //   },
+        //   {
+        //     formatter: function (y) {
+        //       if (typeof y !== 'undefined') {
+        //         return y.toFixed(1) + 'k';
+        //       }
+        //       return y;
+        //     },
+        //   },
+        // ],
       },
     },
   });
 
   return (
-    <div className='w-1/2'>
+    <div className='bg-white w-1/2 p-2 rounded'>
       <div id="chart">
         <ReactApexChart
           options={chartData.options}

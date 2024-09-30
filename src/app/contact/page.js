@@ -5,7 +5,7 @@ import React from "react";
 export default function Page(){
     return (
         <ThemeProvider attribute="class" enableSystem={true} defaultTheme="light" className="lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4">
-        <Header className=""/>
+        <Header className="lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4"/>
         <div className="pt-20">
             <Contact />
         </div>

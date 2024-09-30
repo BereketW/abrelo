@@ -9,8 +9,8 @@ import { RiNotification2Fill } from 'react-icons/ri'
 
 export default function RootLayout({children}) {
   return (
-    <div className='flex h-svh '>
-        <div className='w-1/6 h-full text-[#9097a7] px-6 bg-[#262d34] '>
+    <div className='flex  h-svh '>
+        <div className='w-1/6 shadow h-full text-[#9097a7] fixed px-6 bg-[#262d34] '>
             <div className='flex mb-10  items-center  justify-between pt-5'>
               <div className='w-1/2 relative right-2 '>
                 <Logo />
@@ -22,9 +22,9 @@ export default function RootLayout({children}) {
            <SideBar />
         </div>
 
-        <div className='w-5/6 h-full'>
-            <div className='w-full py-10 px-8 bg-[#262d34]'>
-              <nav className='flex justify-between items-center'>
+        <div className='w-5/6 h-full self-end justify-self-end overflow-scroll fixed top-0 right-0  bg-[#f9f7f7]'>
+            <div className='w-full sticky top-0 py-10 px-8 bg-[#262d34]'>
+              <nav className='flex justify-between items-center '>
                 <h1 className='text-lg text-white'>Welcome</h1>
                 <ul className='flex gap-4 text-[#9097a7]'>
                   <li><ThemeToggle  size={20}/></li>

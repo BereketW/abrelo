@@ -13,8 +13,9 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const pathname =  <GetPathname path={"/admin"}/>
-  console.log("Hello Pathname",pathname)
+  const pathname =  <GetPathname path={"/admin"}/> 
+  const isAdminPage = JSON.stringify(pathname.props.path) === "/admin"
+
   return (
     <html className="scroll-smooth">
       <body className={poppins.className}>

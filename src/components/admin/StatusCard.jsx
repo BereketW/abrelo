@@ -5,21 +5,22 @@ import { BsBagX } from "react-icons/bs";
 
 export default function StatusCard() {
   return (
-    <div className="w-[576px] text-[#5d7186] flex flex-wrap items-start">
-      <div className="border flex flex-col gap-4 w-72 p-4 rounded border-black">
-        <div className="flex items-center justify-between">
-            <BsBagX size={40} className="text-hero"/>
+      <div className=" flex flex-col bg-white gap-4 w-72  rounded">
+        <div className="flex items-center justify-between p-4">
+            <div className=" bg-card-logo text-white rounded-md p-4">
+                <BsBagX size={40} className=" "/>
+            </div>
             <div className="flex flex-col ">
                 <h1>Total Orders</h1>
-                <p className="text-[#313b5e] font-bold">13,000</p>
+                <p className="text-[#313b5e] text-2xl font-bold">13,000</p>
             </div>
         </div>
-        <div className="flex justify-between items-center ">
-            <p className="flex gap-1 items-center"><ChevronUp />2.3% last week</p>
-            <Link href={"orders"} className="text-sm font-bold">View Detail</Link>
+        <div className="flex justify-between items-center  p-4 bg-card-footer">
+            <p className="flex gap-1 text-sm text-success items-center"><ChevronUp />2.3% last week</p>
+            <Link href={"orders"} className="text-sm ">View Detail</Link>
         </div>
       </div>
       
-    </div>
+  
   );
 }

@@ -39,7 +39,9 @@ module.exports = {
     
       colors: {
         "hero": "rgb(255 61 84 / 1)",
-
+        "card-logo":"rgb(255 61 84  / 1)",
+        "success":"#22c55e",
+        "card-footer":"#EEF2F780",
         "primary": "rgb(59 57 88 / 1)",
         "primary-p":"rgb(118 117 136 / 1)",
         border: "hsl(var(--border))",
