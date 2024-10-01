@@ -21,7 +21,7 @@ export default function Channel() {
       duration: 2,
       ease: "none",
       scrollTrigger: {
-        markers: true,
+        markers: false,
         trigger: containerRef.current,
         start: "top top",
         end: "bottom bottom",
