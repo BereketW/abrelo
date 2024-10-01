@@ -48,8 +48,9 @@ export default function VideoOfTheMonth() {
     });
 
    const pathname = usePathname()
+   const pathurl = pathname.split('/')
   return (
-    <div className={`${pathname === hidden ? "hidden":""} relative isolate -mb-20`}>
+    <div className={`${pathurl.includes("admin") || pathname === hidden ? "hidden":""} relative isolate -mb-20`}>
       <div className="container ">
         <div className="lg:pl-24 md:pl-16 sm:pl-8 pl-1 relative grid grid-cols-12 gap-x-7 bg-hero text-white">
           <div className="col-span-full flex flex-col justify-center gap-y-4 py-8 px-5 md:col-span-5 md:gap-y-6 md:py-10 md:px-0 lg:col-span-5 lg:py-0 xl:col-span-3">

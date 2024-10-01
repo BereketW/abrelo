@@ -18,18 +18,20 @@ import {
   RiSettings2Fill,
 } from "react-icons/ri";
 import Logo from "../Logo";
+import { usePathname } from "next/navigation";
 
 export default function SideBar() {
   const [shrink, setShrink] = useState(false);
-  const [hovered, setHovered] = useState(false); // New state for hover
+  // New state for hover
+  const pathname = usePathname()
 
 
   const sideBarLinks = [
-    { icon: RiDashboard2Fill, name: "Dashboard", href: "/" },
-    { icon: RiProductHuntFill, name: "Products", href: "/products" },
-    { icon: RiGroup2Fill, name: "Category", href: "/category" },
-    { icon: RiBox1Line, name: "Inventory", href: "/inventory" },
-    { icon: RiOrderPlayFill, name: "Orders", href: "/orders" },
+    { icon: RiDashboard2Fill, name: "Dashboard", href: "/admin" },
+    { icon: RiProductHuntFill, name: "Products", href: "/admin/products" },
+    { icon: RiGroup2Fill, name: "Category", href: "/admin/category" },
+    { icon: RiBox1Line, name: "Inventory", href: "/admin/inventory" },
+    { icon: RiOrderPlayFill, name: "Orders", href: "/admin/orders" },
     { icon: RiSecurePaymentFill, name: "Purchases", href: "#" },
     { icon: RiAlignItemVerticalCenterFill, name: "Attributes", href: "#" },
     { icon: RiGroup2Fill, name: "Invoices", href: "#" },
@@ -55,11 +57,11 @@ export default function SideBar() {
           {sideBarLinks.map((sidebar) => (
             <li
               key={sidebar.name}
-              className="hover:text-white transition-all duration-300 ease-linear mb-3"
+              className={`hover:text-white ${pathname === sidebar.href ? "border-l-2 border-hero":""} transition-all duration-300 ease-linear mb-3`}
             >
               <Link className="flex items-center gap-4" href={sidebar.href}>
-                <sidebar.icon size={shrink || hovered ? 35 : 20} />
-                <p className={`${shrink || hovered ? "hidden" : ""}`}>{sidebar.name}</p>
+                <sidebar.icon size={shrink  ? 35 : 20} />
+                <p className={`${shrink  ? "hidden" : ""}`}>{sidebar.name}</p>
               </Link>
             </li>
           ))}

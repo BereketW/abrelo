@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import Pagination from "./Pagination";
 
 export default function Orders() {
   return (
@@ -20,7 +21,7 @@ export default function Orders() {
 
         <div className="table-responsive table-centered">
           <table className="table text-sm w-full mb-0">
-            <thead className="bg-light text-sm bg-opacity-50">
+            <thead className="bg-light text-[#5d7186] text-sm bg-opacity-50">
               <tr className="p-2">
                 <th className="p-2">Order ID.</th>
                 <th className="p-2">Date</th>
@@ -128,30 +129,12 @@ export default function Orders() {
           </table>
         </div>
 
-        <div className="p-4 bg-white rounded border-t">
-          <div className="flex items-center justify-between">
-            <div className="">
-              <div className="flex gap-2">
-                Showing
-                <span className="fw-semibold">5</span>
-                of
-                <span className="fw-semibold">90,521</span>
-                orders
-              </div>
-            </div>
+        
 
-            <div className="">
-              <div className="flex text-sm border rounded-3xl">
-                <button className="w-8  flex items-center border-inherit hover:bg-hero transition-all duration-200 justify-center h-9"><ArrowLeft size={15}/></button>
-                <button className="w-8 flex items-center   bg-hero justify-center border-l h-9">1</button>
-                <button className="w-8 flex items-center hover:bg-hero transition-all duration-200 justify-center border-l h-9">2</button>
-                <button className="w-8 flex items-center hover:bg-hero transition-all duration-200 justify-center border-l h-9">3</button>
-                <button className="w-8 flex items-center hover:bg-hero transition-all duration-200 justify-center border-l h-9"><ArrowRight size={15}/></button>
-              </div>
-            </div>
+            <Pagination />
           </div>
         </div>
-      </div>
-    </div>
+      
+    
   );
 }
