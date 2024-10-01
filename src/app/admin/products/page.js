@@ -3,6 +3,6 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div><ProductsList /></div>
+    <div className='p-10'><ProductsList /></div>
   )
 }
