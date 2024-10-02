@@ -46,10 +46,10 @@ export default function Home() {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
-      <div className="relative overflow-x-hidden">
+      <div className="relative dark:bg-[#22282e] overflow-x-hidden ">
         <div
           ref={sectionRef}
-          className="bg-hero-gradient  dark:bg-black    h-svh text-white lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4"
+          className="bg-hero-gradient  dark:bg-[#22282e]    h-svh text-white lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4"
         >
           <Header />
           <Hero />

@@ -17,7 +17,7 @@ export default function CartPage() {
     return total;
   }, [cartProducts]);
   return (
-    <div className="lg:px-24 pb-12 dark:bg-black bg-gray-100 md:px-16 sm:px-8 px-4">
+    <div className="lg:px-24 pb-12 dark:bg-[#262d34] bg-gray-100 md:px-16 sm:px-8 px-4">
       {/* <Header className=""/> */}
       <div className="flex items-center justify-center mb-16">
         <ul className="flex items-center gap-10 mt-24">

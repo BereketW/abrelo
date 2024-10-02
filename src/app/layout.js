@@ -18,11 +18,11 @@ export default function RootLayout({ children }) {
 
   return (
     <html className="scroll-smooth">
-      <body className={poppins.className}>
+      <body className={poppins.className} >
         <ToastContainer />
        
         {/* Client Component */}
-        {children}
+        <div className="dark:bg-[#22282e]">{children}</div>
          <VideoOfTheMonth />
         <Footer />
       </body>

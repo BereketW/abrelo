@@ -9,11 +9,15 @@ import { ThemeProvider, useTheme } from "next-themes";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css"; // Import the skeleton CSS
 import { getManyProducts } from "@/data/products";
+import ShopHeader from "@/components/ShopHeader";
+import ShopCategory from "@/components/ShopCategory";
+import { usePathname } from "next/navigation";
 
 export default function WomenClothingCard({ searchParams }) {
   const [allProducts, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const pathname = usePathname()
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -43,89 +47,94 @@ export default function WomenClothingCard({ searchParams }) {
   console.log(allProducts);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
-      <Header className="lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4" />
-      <main className="lg:px-24 md:px-16 sm:px-8 px-4 my-10 mt-32">
-        <div className="grid  place-content-center border lg:grid-cols-4 md:grid-cols-2 gap-10">
-          {/* {loading
-            ? // Show skeleton loaders while loading
-              Array.from({ length: 12 }).map((_, index) => (
-                <div key={index} style={{ width: "300px", height: "340px" }}>
-                  <Skeleton
-                    width="100%"
-                    height="50%"
-                    baseColor={theme === "light" ? "#ebebeb" : "#333232"}
-                    highlightColor="#f0f0f0"
-                    style={{ borderRadius: "10px " }}
-                  />
-                  <Skeleton
-                    width="30%"
-                    height="10%"
-                    baseColor={theme === "light" ? "#ebebeb" : "#333232"}
-                    highlightColor="#f0f0f0"
-                    style={{ borderRadius: "10px " }}
-                  />
-                  <Skeleton
-                    width="40%"
-                    height="10%"
-                    baseColor={theme === "light" ? "#ebebeb" : "#333232"}
-                    highlightColor=""
-                    style={{ borderRadius: "10px " }}
-                  />
-                  <Skeleton
-                    width="40%"
-                    height="10%"
-                    baseColor={theme === "light" ? "#ebebeb" : "#333232"}
-                    highlightColor="#f0f0f0"
-                    style={{ borderRadius: "10px " }}
-                  />
-                </div>
-              ))
-            :
-             allProducts.map((product) => (
-                <div
-                  style={{ width: "300px", height: "400px" }}
-                  key={product.id}
-                > */}
-          {/* <Suspense
-                    fallback={
+    <ThemeProvider attribute="class"  defaultTheme="light" enableSystem={true}>
+      <div className="w-full  ">
+        <Header className="lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4" />
+          {/* <div className="text-white bg-hero text-2xl font-extrabold text-center ">{pathname}</div> */}
+        <main className="lg:px-24  md:px-16 sm:px-8 px-4 flex flex-wrap gap-10 my-10  ">
+          <ShopCategory />
+          <div className="w-full">
+            <ShopHeader />
+            <div className="    flex flex-wrap items-center  gap-10">
+              {/* {loading
+                ? // Show skeleton loaders while loading
+                  Array.from({ length: 12 }).map((_, index) => (
+                    <div key={index} style={{ width: "300px", height: "340px" }}>
                       <Skeleton
                         width="100%"
-                        height="100%"
-                        baseColor="#e0e0e0"
+                        height="50%"
+                        baseColor={theme === "light" ? "#ebebeb" : "#333232"}
                         highlightColor="#f0f0f0"
-                        style={{ borderRadius: "10px" }}
+                        style={{ borderRadius: "10px " }}
                       />
-                    }
-                  > */}
-          {allProducts.map((product) => (
-            <ProductCard loading={loading} key={product.id} product={product}>
-              <Rating rating={product?.rating || 4} />
-            </ProductCard>
-          ))}
-
-          {/* </Suspense> */}
-        </div>
-        {/* ))} */}
-        {/* </div> */}
-
-        <div className="flex gap-8 my-20 items-center justify-center">
-          <button
-            disabled={allProducts.length <= 0}
-            onClick={() => setCurrentPage(currentPage + 1)}
-            className="text-hero font-bold"
-          >
-            <MoveRightIcon />
-          </button>
-          <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage(currentPage - 1)}
-            className="text-hero font-bold"
-          >
-            <MoveLeftIcon />
-          </button>
-        </div>
-      </main>
+                      <Skeleton
+                        width="30%"
+                        height="10%"
+                        baseColor={theme === "light" ? "#ebebeb" : "#333232"}
+                        highlightColor="#f0f0f0"
+                        style={{ borderRadius: "10px " }}
+                      />
+                      <Skeleton
+                        width="40%"
+                        height="10%"
+                        baseColor={theme === "light" ? "#ebebeb" : "#333232"}
+                        highlightColor=""
+                        style={{ borderRadius: "10px " }}
+                      />
+                      <Skeleton
+                        width="40%"
+                        height="10%"
+                        baseColor={theme === "light" ? "#ebebeb" : "#333232"}
+                        highlightColor="#f0f0f0"
+                        style={{ borderRadius: "10px " }}
+                      />
+                    </div>
+                  ))
+                :
+                 allProducts.map((product) => (
+                    <div
+                      style={{ width: "300px", height: "400px" }}
+                      key={product.id}
+                    > */}
+              {/* <Suspense
+                        fallback={
+                          <Skeleton
+                            width="100%"
+                            height="100%"
+                            baseColor="#e0e0e0"
+                            highlightColor="#f0f0f0"
+                            style={{ borderRadius: "10px" }}
+                          />
+                        }
+                      > */}
+              {allProducts.map((product) => (
+                <ProductCard loading={loading} key={product.id} product={product}>
+                  <Rating rating={product?.rating || 4} />
+                </ProductCard>
+              ))}
+              {/* </Suspense> */}
+            </div>
+          </div>
+          {/* ))} */}
+          {/* </div> */}
+        </main>
+          <div className="flex gap-8 my-20 items-center justify-center">
+            <button
+              disabled={allProducts.length <= 0}
+              onClick={() => setCurrentPage(currentPage + 1)}
+              className="text-hero font-bold"
+            >
+              <MoveRightIcon />
+            </button>
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage(currentPage - 1)}
+              className="text-hero font-bold"
+            >
+              <MoveLeftIcon />
+            </button>
+          </div>
+      </div>
     </ThemeProvider>
   );
 }

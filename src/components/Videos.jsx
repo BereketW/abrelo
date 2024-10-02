@@ -106,8 +106,8 @@ export default function Videos({ left = true, dark }) {
         },
       },
     ],
-    nextArrow: <Button styles="-left-4  p-3 lg:-top-12 md:-top-12 -top-10   lg:h-14 md:h-14 md:w-10 sm:h-8 sm:w-10 h-6 w-8 lg:w-10 dark:bg-gray-900 border-none dark:text-white outline-none text-primary  flex items-center justify-center border bg-white  border-white   absolute" icon=<MoveRightIcon size={100}/>/>,
-    prevArrow: <Button styles=" lg:-top-12 md:-top-12 -top-10 lg:left-6 md:left-6 left-4 p-3 dark:bg-gray-900 border-none dark:text-white md:h-14 md:w-10 sm:h-8 sm:w-10 h-6 w-8  outline-none  text-primary   lg:h-14 lg:w-10 flex items-center justify-center border bg-white  border-white   absolute" icon=<MoveLeftIcon size={100}/>/>
+    nextArrow: <Button styles="-left-4  p-3 lg:-top-12 md:-top-12 -top-10   lg:h-14 md:h-14 md:w-10 sm:h-8 sm:w-10 h-6 w-8 lg:w-10 dark:bg-[#262d34] border-none dark:text-white outline-none text-primary  flex items-center justify-center border bg-white  border-white   absolute" icon=<MoveRightIcon size={100}/>/>,
+    prevArrow: <Button styles=" lg:-top-12 md:-top-12 -top-10 lg:left-6 md:left-6 left-4 p-3 dark:bg-[#262d34] border-none dark:text-white md:h-14 md:w-10 sm:h-8 sm:w-10 h-6 w-8  outline-none  text-primary   lg:h-14 lg:w-10 flex items-center justify-center border bg-white  border-white   absolute" icon=<MoveLeftIcon size={100}/>/>
 
   };
 
@@ -162,7 +162,7 @@ export default function Videos({ left = true, dark }) {
     //     )}
     //   </div>
     // </div>
-    <div className="lg:ml-24 md:ml-16 sm:ml-8 p-4 relative -top-10 bg-white dark:bg-gray-900">
+    <div className="lg:ml-24 md:ml-16 sm:ml-8 p-4 relative -top-10 bg-white dark:bg-[#262d34]">
       <Slider {...settings} >
         {videos.map((video) => (
           <div key={video.id.videoId} className="lg:p-4 lg:pl-12 md:pl-8 sm:pl-4   z-50">

@@ -4,7 +4,7 @@ export default function Blog({news, cut=false}) {
  
        if(cut)news.length=3;
   return (
-    <div className="grid  lg:mt-24 mt-12 grid-cols-12 gap-y-7 sm:gap-[30px]">
+    <div className="grid lg:ml-24 md:ml-16 sm:ml-8 p-4 lg:mt-24 mt-12 grid-cols-12 gap-y-7 sm:gap-[30px]">
       {news.map((post) => (
         <div
           key={post.title}
@@ -23,7 +23,7 @@ export default function Blog({news, cut=false}) {
             <div className="inline-flex bg-hero px-2 py-[6px] text-xs font-bold uppercase leading-none text-white">
               Entertainment
             </div>
-            <div className="bg-white dark:bg-gray-800 p-6">
+            <div className="bg-white dark:bg-[#262d34] p-6">
               <h2 className="mb-4 text-xl font-bold leading-6 lg:tracking-tighter">
                 <a
                   href={post.url}
