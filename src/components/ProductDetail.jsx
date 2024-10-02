@@ -47,74 +47,19 @@ export default function ProductDetail({ singleProduct, children }) {
             className="h-72 "
           >
            
-              <SwiperSlide
+             {singleProduct.images.map(image => (<SwiperSlide
                 key={singleProduct.id}
                 className="w-10 flex items-center justify-center relative"
               >
                
                   <img
-                    src={`${singleProduct.image}`}
+                    src={`${image.url}`}
                     className=" absolute top-1/2 left-1/2 -translate-x-1/2 object-fill h-full rounded-md object-center -translate-y-1/2"
                   />
                
-              </SwiperSlide>
-              <SwiperSlide
-                key={singleProduct.id}
-                className="w-10 flex items-center justify-center relative"
-              >
-               
-                  <img
-                    src={`${singleProduct.image}`}
-                    className=" absolute top-1/2 left-1/2 -translate-x-1/2 object-fill h-full rounded-md object-center -translate-y-1/2"
-                  />
-               
-              </SwiperSlide>
-              <SwiperSlide
-                key={singleProduct.id}
-                className="w-10 flex items-center justify-center relative"
-              >
-               
-                  <img
-                    src={`${singleProduct.image}`}
-                    className=" absolute top-1/2 left-1/2 -translate-x-1/2 object-fill h-full rounded-md object-center -translate-y-1/2"
-                  />
-               
-              </SwiperSlide>
-              <SwiperSlide
-                key={singleProduct.id}
-                className="w-10 flex items-center justify-center relative"
-              >
-               
-                  <img
-                    src={`${singleProduct.image}`}
-                    className=" absolute top-1/2 left-1/2 -translate-x-1/2 object-fill h-full rounded-md object-center -translate-y-1/2"
-                  />
-               
-              </SwiperSlide>
-              <SwiperSlide
-                key={singleProduct.id}
-                className="w-10 flex items-center justify-center relative"
-              >
-               
-                  <img
-                    src={`${singleProduct.image}`}
-                    className=" absolute top-1/2 left-1/2 -translate-x-1/2 object-fill h-full rounded-md object-center -translate-y-1/2"
-                  />
-               
-              </SwiperSlide>
-              <SwiperSlide
-                key={singleProduct.id}
-                className="w-10 flex items-center justify-center relative"
-              >
-               
-                  <img
-                    src={`${singleProduct.image}`}
-                    className=" absolute top-1/2 left-1/2 -translate-x-1/2 object-fill h-full rounded-md object-center -translate-y-1/2"
-                  />
-               
-              </SwiperSlide>
-           
-          </Swiper>
+              </SwiperSlide>)) }
+              </Swiper>
+              
           <Swiper
             onSwiper={setThumbsSwiper}
             loop={true}
@@ -126,60 +71,20 @@ export default function ProductDetail({ singleProduct, children }) {
             className="m-4  h-full p-4 w-full flex"
           >
          
-              <SwiperSlide
+             {singleProduct.images.map(image => (<SwiperSlide
                 key={singleProduct.id}
                 className="flex w-20 h-20 items-center rounded-md justify-center "
               >
            
-                  <img src={`${singleProduct.image}`} className="w-20 h-20 " />
+                  <img src={`${image.url}`} className="w-20 h-20 " />
                
-              </SwiperSlide>
-              <SwiperSlide
-                key={singleProduct.id}
-                className="flex w-20 h-20 items-center rounded-md justify-center "
-              >
-           
-                  <img src={`${singleProduct.image}`} className="w-20 h-20 " />
-               
-              </SwiperSlide>
-              <SwiperSlide
-                key={singleProduct.id}
-                className="flex w-20 h-20 items-center rounded-md justify-center "
-              >
-           
-                  <img src={`${singleProduct.image}`} className="w-20 h-20 " />
-               
-              </SwiperSlide>
-              <SwiperSlide
-                key={singleProduct.id}
-                className="flex w-20 h-20 items-center rounded-md justify-center "
-              >
-           
-                  <img src={`${singleProduct.image}`} className="w-20 h-20 " />
-               
-              </SwiperSlide>
-              <SwiperSlide
-                key={singleProduct.id}
-                className="flex w-20 h-20 items-center rounded-md justify-center "
-              >
-           
-                  <img src={`${singleProduct.image}`} className="w-20 h-20 " />
-               
-              </SwiperSlide>
-              <SwiperSlide
-                key={singleProduct.id}
-                className="flex w-20 h-20 items-center rounded-md justify-center "
-              >
-           
-                  <img src={`${singleProduct.image}`} className="w-20 h-20 " />
-               
-              </SwiperSlide>
+            </SwiperSlide>)) }
           
           </Swiper>
         </div>
         <div className="flex gap-4 flex-col flex-1 justify-center">
           <h1 className=" text-slate-900 w-full text-balance dark:text-white font-extrabold text-4xl">
-            {singleProduct.title.slice(0, 30)}
+            {singleProduct.name.slice(0, 30)}
           </h1>
           <span className="px-2 py-1 text-sm self-start bg-color-primary text-white rounded-full">
             In stock
@@ -192,7 +97,7 @@ export default function ProductDetail({ singleProduct, children }) {
               <CurrencyFormat amount={singleProduct.price} />
             </p>
           </div>
-          <Rating rating={singleProduct.rating} />
+          <Rating rating={singleProduct.rating || 4} />
           <small>Description</small>
           <p className="text-base break-words lg:w-3/4 dark:text-primary-p text-gray-600">
             {singleProduct.description.slice(0, 270)}...

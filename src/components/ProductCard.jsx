@@ -35,11 +35,11 @@ export default function ProductCard({ loading, product, children }) {
               style={{ borderRadius: "10px" }} 
             />
           ) : (
-            <Link href={`shop/${product.id}`}>
+            <Link className="w-full" href={`shop/${product.id}`}>
               <img
-                src={product.image}
+                src={product.images[0].url}
                 alt="image"
-                className="scale-110 rounded group-hover:scale-125 transition-all ease-in-out duration-300 w-full object-contain h-36"
+                className="scale-110 w-80 rounded group-hover:scale-125 transition-all ease-in-out duration-300 w-full object-cover h-36"
               />
             </Link>
           )}
@@ -83,7 +83,7 @@ export default function ProductCard({ loading, product, children }) {
 
       <div className="w-full">
         <Suspense fallback={<Skeleton width="100%" />}>
-          <p className="text-sm">{loading ? <Skeleton width="70%" /> : product.title.slice(0, 25)}</p>
+          <p className="text-sm">{loading ? <Skeleton width="70%" /> : product.name.slice(0, 25)}</p>
         </Suspense>
         
         <Suspense fallback={<Skeleton width="100%" height={20} />}>

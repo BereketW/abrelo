@@ -35,7 +35,9 @@ module.exports = {
         
       },
       backgroundImage:{
-        "medium":"url('/assets/abrelo-reacting.png')"
+        "medium":"url('/assets/abrelo-reacting.png')",
+
+        "hero-img":" radial-gradient(circle at 70% 50%, #fff9c3 11%, transparent 41%), radial-gradient(circle at 68% 50%, rgba(255, 250, 195, .1) 13%, transparent 52%)"
       },
     
       colors: {

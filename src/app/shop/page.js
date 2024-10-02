@@ -8,28 +8,37 @@ import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import { ThemeProvider, useTheme } from "next-themes";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css"; // Import the skeleton CSS
+import { getManyProducts } from "@/data/products";
 
 export default function WomenClothingCard({ searchParams }) {
   const [allProducts, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
     async function getProducts() {
-      setLoading(true);
-      const response = await fetch(
-        `http://localhost:3001/api/products?page=${currentPage}&limit=12`
-      );
+      // setLoading(true);
+      // const response = await fetch(
+      //   `http://localhost:3001/api/products?page=${currentPage}&limit=12`
+      // );
 
-      const data = await response.json();
-      console.log(data);
+      // const data = await response.json();
+      // console.log(data);
 
-      setProducts(data.products);
-      setLoading(false);
+      // setProducts(data.products);
+      // setLoading(false);
     }
     getProducts();
   }, [currentPage]);
+  useEffect(()=>{
+    async function fetchProduct(){
+      const products = await getManyProducts()
+      setProducts(products.products)
+      console.log("Fetched Products", products)
+    }
+    fetchProduct()
+  },[])
 
   console.log(allProducts);
 
@@ -91,7 +100,7 @@ export default function WomenClothingCard({ searchParams }) {
                   > */}
           {allProducts.map((product) => (
             <ProductCard loading={loading} key={product.id} product={product}>
-              <Rating rating={product?.rating ?? 4} />
+              <Rating rating={product?.rating || 4} />
             </ProductCard>
           ))}
 

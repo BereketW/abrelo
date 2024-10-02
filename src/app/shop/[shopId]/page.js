@@ -4,6 +4,7 @@ import ProductDetail from "../../../components/ProductDetail";
 import { useEffect, useState } from "react";
 import Header from "../../../components/Header";
 import { ThemeProvider } from "next-themes";
+import { getOneProduct } from "@/data/products";
 // import { jewelery } from "@app/client/api/products";
 // import ProductDetail from "@app/client/components/global/ProductDetail";
 // import { getOneProduct } from "@app/client/data/products";
@@ -33,9 +34,8 @@ export default function Home({ params }) {
   useEffect(() => {
     async function getProducts() {
       try {
-        const response = await fetch(`http://localhost:3001/api/products/${params.shopId}`);
-        const data = await response.json();
-        setSingleProduct(data[0]);
+        const data = await getOneProduct(params.shopId)
+        setSingleProduct(data);
 
         // Filter out the single product using params.shopId (assuming it's the product ID)
        

@@ -6,6 +6,13 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { RiDiscountPercentLine } from "react-icons/ri";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function AddProductDetail() {
   const [imagePreviews, setImagePreviews] = useState([]);
@@ -38,18 +45,33 @@ export default function AddProductDetail() {
   ];
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      const categories = await getManyCategories();
-      setCategories(categories);
-    };
+    async function fetchCategories() {
+
+        const fetchedCategories = await getManyCategories();
+        console.log("Fetched Categories:", fetchedCategories); // Check if you're receiving the correct data
+        setCategories([...fetchedCategories]);
+    }
+
     fetchCategories();
   }, []);
 
   const handleImageUpload = (e) => {
     setError("");
     const files = Array.from(e.target.files);
-    setImages((prevImages) => [...prevImages, ...files]);
 
+    if (files.length + images.length > 4) {
+      setError("You can only upload a maximum of 4 images.");
+      return;
+    }
+
+    files.forEach((file) => {
+      if (!["image/jpeg", "image/png", "image/gif"].includes(file.type)) {
+        setError("Only JPG, PNG, and GIF formats are allowed.");
+        return;
+      }
+    });
+
+    setImages((prevImages) => [...prevImages, ...files]);
     const newPreviews = files.map((file) => URL.createObjectURL(file));
     setImagePreviews((prevPreviews) => [...prevPreviews, ...newPreviews]);
   };
@@ -60,6 +82,7 @@ export default function AddProductDetail() {
       prevPreviews.filter((_, i) => i !== index)
     );
   };
+  
 
   const toggleItem = (item, setSelected, selectedList) => {
     if (selectedList.includes(item)) {
@@ -71,6 +94,11 @@ export default function AddProductDetail() {
 
   async function onSubmit(e) {
     e.preventDefault();
+    if (images.length < 4) {
+      setError("Please upload at least 4 images.");
+      return;
+    }
+
     setIsLoading(true);
 
     const formData = new FormData();
@@ -100,8 +128,14 @@ export default function AddProductDetail() {
     }
   }
 
+ 
+
+  
+  const isSubmitDisabled = images.length < 4;
+  const finalPrice = price - (price * discount) / 100;
+
   return (
-    <div className="flex items-start p-10 w-full gap-10">
+    <section className="flex items-start p-10 w-full gap-10">
       <div className="w-1/2 bg-white sticky top-20 p-10 rounded">
         {images.length > 0 && (
           <div className="h-1/2">
@@ -113,7 +147,7 @@ export default function AddProductDetail() {
           </div>
         )}
         {images.length < 4 && (
-          <p className="my-4 text-sm text-color-body">
+          <p className="my-4 text-hero text-sm text-color-body">
             You need to add at least 4 images.
           </p>
         )}
@@ -141,7 +175,7 @@ export default function AddProductDetail() {
             Price:{" "}
             <span className="flex font-medium gap-4">
               <span className="line-through ">${price}</span>
-              <span>${price - discount}</span>
+              <span>${finalPrice}</span>
             </span>
           </h1>
           <h1 className="text-lg flex flex-col mt-4  text-[##313b5e]">
@@ -174,29 +208,12 @@ export default function AddProductDetail() {
             </span>
           </h1>
           <p className="text-sm mt-3 ">{description}</p>
-          <div className="    mt-8  ">
-            <div className="flex justify-between">
-              <div>
-                <input
-                  type="submit"
-                  value={isLoading ? "Loading..." : "Create Product"}
-                  className="px-4 self-start  rounded cursor-pointer py-2 m-auto bg-[#22c55e] text-white"
-                />
-              </div>
-              <Link
-                className="px-4 py-2 border-hero border text-hero rounded"
-                href={"/admin/prodcts"}
-              >
-                Cancel
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
 
       <div className="w-full">
         <div className="flex-1 bg-white relative border-dashed border-2 rounded flex flex-col w-full items-center justify-center p-24 border-[#d8dfe7">
-          <CloudUpload size={50} className="text-hero "/>
+          <CloudUpload size={50} className="text-hero " />
           <h1 className="text-xl mt-3 font-semibold">
             Drop Your Images Here or,{" "}
             <span className="text-hero">Click to browse</span>
@@ -222,7 +239,7 @@ export default function AddProductDetail() {
                 <div className="flex flex-col w-1/2">
                   <label>Product Name</label>
                   <input
-                  required
+                    required
                     type="text"
                     onChange={(e) => setName(e.target.value)}
                     className="px-4 py-2 border"
@@ -231,12 +248,21 @@ export default function AddProductDetail() {
                 </div>
                 <div className="flex flex-col w-1/2">
                   <label>Product Categories</label>
-                  <input
-                  
-                    type="button"
-                    value="Categories"
-                    className="px-4 py-2 border rounded"
-                  />
+                  <Select>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Categories" />
+                    </SelectTrigger>
+                    <SelectContent>
+                     
+                          <SelectItem  value="Electronics">
+                           Electronics
+                          </SelectItem>
+                          <SelectItem  value="Clothes">
+                           Clothes
+                          </SelectItem>
+                     
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
@@ -260,12 +286,22 @@ export default function AddProductDetail() {
                   />
                 </div>
                 <div className="flex flex-col w-1/3">
-                  <label>Stock</label>
-                  <input
-                    type="number"
-                    className="px-4 py-2 border rounded"
-                    placeholder="Quantity"
-                  />
+                  <label>Stock Status</label>
+                  <Select>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Stock Status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                     
+                          <SelectItem  value="In Stock">
+                           In Stock
+                          </SelectItem>
+                          <SelectItem  value="Out of Stock">
+                           Out of Stock
+                          </SelectItem>
+                     
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
@@ -372,9 +408,27 @@ export default function AddProductDetail() {
                 </div>
               </div>
             </div>
+            <div className="flex gap-10 p-4 items-center">
+              <div className="my-8">
+                <input
+                  type="submit"
+                  value={isLoading ? "Loading..." : "Create Product"}
+                  disabled={isSubmitDisabled || isLoading}
+                  className={`px-4  rounded cursor-pointer py-2 m-auto bg-[#22c55e] text-white ${
+                    isSubmitDisabled ? "cursor-not-allowed opacity-50" : ""
+                  }`}
+                />
+              </div>
+              <Link
+                className="px-4 py-2 border-hero border text-hero rounded"
+                href={"/admin/prodcts"}
+              >
+                Cancel
+              </Link>
+            </div>
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

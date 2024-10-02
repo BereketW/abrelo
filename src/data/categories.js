@@ -14,12 +14,11 @@ export async function createCategory(data) {
 }
 
 export async function getManyCategories(query = "") {
-  try {
+  
     const res = await fetcher.get(`/categories?category=${query}`);
+    // console.log(res)
     return res.data;
-  } catch (error) {
-    // console.log(error);
-  }
+  
 }
 
 export async function getOneCategory(id) {

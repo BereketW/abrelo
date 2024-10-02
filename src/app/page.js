@@ -49,7 +49,7 @@ export default function Home() {
       <div className="relative overflow-x-hidden">
         <div
           ref={sectionRef}
-          className="lg:bg-hero-gradient dark:bg-black bg-hero h-svh text-white lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4"
+          className="bg-hero-gradient  dark:bg-black    h-svh text-white lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4"
         >
           <Header />
           <Hero />

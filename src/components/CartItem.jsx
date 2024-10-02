@@ -14,11 +14,11 @@ export default function CartItem({ product, fixed=false, flex=false }) {
   
   return (
     <div key={product?.id} className={`flex ${fixed ? "w-[400px]" :""}  mb-5 relative justify-between items-center gap-4`}>
-      <img className="w-20 rounded h-20" src={product?.image} alt="" />
+      <img className="w-20 rounded h-20" src={product?.images[0]} alt="" />
 
       <div className="flex flex-col gap-1 ">
         <Rating rating={4} />
-        <h6 className="text-sm">{product?.title.slice(0, 20)}</h6>
+        <h6 className="text-sm">{product?.name.slice(0, 20)}</h6>
         <small>${product?.price}</small>
       </div>
       <CountQuantity product={product} />

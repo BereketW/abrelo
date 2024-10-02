@@ -9,7 +9,7 @@ import { FaYoutube } from "react-icons/fa";
 
 export default function Hero() {
   return (
-    <div className=" w-full flex gap-10 mt-24 lg:-mt-16 lg:items-center lg:bg-inherit   bg-no-repeat bg-cover bg-center h-full -z-10 ">
+    <div className=" w-full flex gap-10 mt-24 lg:-mt-16 lg:items-center      bg-no-repeat bg-cover bg-center h-full -z-10 ">
      <SocialLinks className="flex  flex-col lg:gap-14  lg:justify-between md:gap-6 sm:gap-4 gap-5 z-50   "/>
       <div className="pl-8 lg:pl-12  ">
           <div  className="mt-1 mb-4 hidden  transition-opacity duration-500 group-[.vv-slide-played]:opacity-100 group-[.swiper-slide-active:not(.vv-slide-played)]:opacity-100 lg:block"
@@ -21,7 +21,7 @@ export default function Hero() {
             {"Abrelo HD's"}
           </span>{" "}
           {/* <span className="text-[#fffac3]">REACTION</span> */}
-          <span class="-mt-1 text-4xl leading-none tracking-tightest  transition-opacity delay-[600ms] duration-500  lg:-mt-2 lg:text-6.5xl xl:text-8xl">
+          <span class="-mt-1 text-4xl leading-none tracking-tightest text-[#fff9c3]  transition-opacity delay-[600ms] duration-500  lg:-mt-2 lg:text-6.5xl xl:text-8xl">
             REACTION
           </span>
         </h2>

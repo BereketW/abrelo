@@ -1,15 +1,55 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { jwtDecode } from "jwt-decode";
 
-export function middleware(request) {
-  // Add a custom header `x-current-path` which passes the path to downstream components
-  const headers = new Headers(request.headers);
-  headers.set("x-current-path", request.nextUrl.pathname); // Set the current path as the header value
-  return NextResponse.next({ headers });
+const roleRoutes = ["/admi"];
+const protectedRoutes = [...roleRoutes, "/profile", "/checkout", "/carts"];
+const authRoutes = ["/auth"];
+const homeRoutes = ["/"];
+
+export async function middleware(request) {
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", request.nextUrl.pathname);
+  const pathname = request.nextUrl.pathname;
+  const cookieStore = cookies();
+  const accessToken = cookieStore.get("accessToken")?.value;
+  const authUser = accessToken ? jwtDecode(accessToken) : null;
+
+  const isAuthPath = authRoutes.some((route) => pathname.startsWith(route));
+  const isRolePath = roleRoutes.some((route) => pathname.startsWith(route));
+  const isHomePath = homeRoutes.includes(pathname);
+  const isProtectedPath = protectedRoutes.some((route) =>
+    pathname.startsWith(route)
+  );
+
+  if (authUser?.userId && authUser.role) {
+    const userRolePath = `/${authUser.role.toLowerCase()}`;
+
+    if (isRolePath && !pathname.startsWith(userRolePath)) {
+      const currentPath = pathname.replace(
+        new RegExp(roleRoutes.join("|")),
+        userRolePath
+      );
+      if (roleRoutes.includes(userRolePath)) {
+        return NextResponse.redirect(new URL(currentPath, request.url));
+      }
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+
+    if (isHomePath && roleRoutes.includes(userRolePath)) {
+      return NextResponse.redirect(new URL(userRolePath, request.url));
+    } else if (isAuthPath) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  } 
+
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 }
 
 export const config = {
-  matcher: [
-    // match all routes except static files and APIs
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
-  ],
+  matcher: ["/((?!api|_next|.*\\..*).*)"],
 };
