@@ -48,14 +48,14 @@ export default function WomenClothingCard({ searchParams }) {
 
   return (
     <ThemeProvider attribute="class"  defaultTheme="light" enableSystem={true}>
-      <div className="w-full  ">
+      <div className="w-full  bg-[#f9f7f7] dark:bg-inherit">
         <Header className="lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4" />
           {/* <div className="text-white bg-hero text-2xl font-extrabold text-center ">{pathname}</div> */}
-        <main className="lg:px-24  md:px-16 sm:px-8 px-4 flex flex-wrap gap-10 my-10  ">
+        <main className="lg:px-24 w-full md:px-16 sm:px-8 px-4 flex items-start flex-col lg:flex-row  gap-10 mt-10  ">
           <ShopCategory />
           <div className="w-full">
-            <ShopHeader />
-            <div className="    flex flex-wrap items-center  gap-10">
+            {/* <ShopHeader /> */}
+            <div className=" w-full  flex flex-wrap items-center  gap-10">
               {/* {loading
                 ? // Show skeleton loaders while loading
                   Array.from({ length: 12 }).map((_, index) => (

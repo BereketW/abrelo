@@ -25,7 +25,7 @@ export default function ProductCard({ loading, product, children }) {
   }
 
   return (
-    <div className="group mt-6 w-1/3 flex dark:bg-[#282f36] flex-col items-center border rounded-xl p-4 transition-all cursor-pointer">
+    <div className="group  flex bg-white dark:bg-[#282f36] flex-col items-center border rounded-xl p-4 transition-all cursor-pointer">
       <div className="h-52 relative overflow-hidden w-full transition-all ease-in-out mb-3">
         <div className="p-4 w-full h-full">
           {loading ? (

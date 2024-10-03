@@ -4,7 +4,7 @@ export default function Blog({news, cut=false}) {
  
        if(cut)news.length=3;
   return (
-    <div className="grid lg:ml-24 md:ml-16 sm:ml-8 p-4 lg:mt-24 mt-12 grid-cols-12 gap-y-7 sm:gap-[30px]">
+    <div className="grid lg:mx-32 md:mx-16 sm:mx-8 p-4 lg:mt-24 mt-12 grid-cols-12 gap-y-7 sm:gap-[30px]">
       {news.map((post) => (
         <div
           key={post.title}

@@ -21,7 +21,7 @@ export default function ShopCategory() {
   }, []);
   return (
     <div>
-      <div className="relative flex bg-[#F5F7F8] dark:bg-[#282f36] text-[#9097a7] p-8 ">
+      <div className="relative flex bg-white p-4 border dark:bg-[#282f36] text-[#9097a7]  ">
         <input
           type="text"
           placeholder="Search... "
@@ -29,7 +29,7 @@ export default function ShopCategory() {
         />
         <Search className="absolute top-1/2  -translate-y-1/2" />
       </div>
-      <div className="dark:bg-[#282f36]  bg-[#F5F7F8] p-4 rounded mt-10">
+      <div className="dark:bg-[#282f36]  bg-white p-4 rounded mt-10">
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
             <AccordionTrigger>Categories</AccordionTrigger>
