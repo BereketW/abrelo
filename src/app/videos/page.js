@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import VideosHeader from '../../components/VideosHeader'
 import Header from '../../components/Header'
+import PathInfo from '@/components/PathInfo'
+import HeroWrapper from '@/components/HeroWrapper'
 export default function Page() {
     const [videos, setVideos] = useState([])
     const [isLoading, setLoading] = useState(false)
@@ -29,10 +31,13 @@ export default function Page() {
       }, []);
    
   return (
-    <div className="lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4">
-        <Header className=""/>
+    <div className="">
+        <HeroWrapper>
+        <Header className="lg:px-12 text-white xl:px-24 md:px-16  sm:px-8 px-4" />
+        <PathInfo />
+      </HeroWrapper>
         {/* <VideosHeader /> */}
-        <div className='grid mt-16 grid-cols-12 gap-y-14  sm:gap-x-[30px]'>
+        <div className='grid lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4 mt-16 grid-cols-12 gap-y-14  sm:gap-x-[30px]'>
         {videos.map((video) => (
               <div key={video.id.videoId} className="col-span-full sm:col-span-6 lg:col-span-3">
                 <iframe

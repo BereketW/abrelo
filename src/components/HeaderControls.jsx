@@ -57,12 +57,12 @@ export default function HeaderControls({ display, setDisplay, setHidden }) {
         >
          {cartProducts.length && <span
             className={`${
-              pathname === "/"
-                ? "text-white bg-hero border-white"
-                : "text-dark border-black"
-            } border-2 ${
+              
+                 "text-white bg-hero "
+                
+            }  ${
               cartProducts.length === 0 ? "hidden top-0 right-0" : ""
-            } text-sm dark:bg-[#262d34]  absolute -top-1 dark:border-white -right-3 font-bold p-2 flex items-center justify-center  rounded-full h-2 w-2`}
+            } text-sm dark:bg-[#262d34]  absolute -top-1  -right-3 font-bold p-2 flex items-center justify-center  rounded-full h-2 w-2`}
           >
             {cartProducts.length}
           </span>}

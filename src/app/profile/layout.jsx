@@ -1,6 +1,8 @@
 "use client";
 import Greeting from "@/components/Greeting";
 import Header from "@/components/Header";
+import HeroWrapper from "@/components/HeroWrapper";
+import PathInfo from "@/components/PathInfo";
 import UserSidebar from "@/components/UserSidebar";
 // import Loader from "@app/client/components/global/Loader";
 // import Greeting from "@app/client/components/user/Greeting";
@@ -15,7 +17,10 @@ export default function Layout({ children }) {
   const pathname = usePathname();
   return (
     <div>
-      <Header className="lg:px-12 xl:px-24 md:px-16 sm:px-8 px-4"/>
+      <HeroWrapper>
+        <Header className="lg:px-12 text-white xl:px-24 md:px-16  sm:px-8 px-4" />
+        <PathInfo />
+      </HeroWrapper>
       <div className="lg:px-16 px-8 mt-10 mb-12">
         <div className="ml-20">
           {" "}

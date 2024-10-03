@@ -34,11 +34,12 @@ export default function Header({className=''}) {
           <NavLink href="/">Home</NavLink>
 
           <NavLink href="/videos">Videos</NavLink>
-          <NavLink href="#">Event</NavLink>
-
+          
           <NavLink href="/blog">Blog</NavLink>
+          <NavLink href="/support">Support</NavLink>
+
           <NavLink href="/about">About</NavLink>
-          <NavLink href="#">Partners</NavLink>
+          
           <NavLink href="/contact">Contact</NavLink>
           <NavLink href="/shop">Shop</NavLink>
         </ul>

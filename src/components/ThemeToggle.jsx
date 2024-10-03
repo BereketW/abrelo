@@ -36,10 +36,10 @@ export default function ThemeToggle() {
           }
         />
         <span
-          className={`relative z-10 block h-6 w-11 rounded-full border-2 dark:border-white   after:absolute after:top-0.5 after:left-0.5 after:h-4 after:w-4 after:rounded-full after:bg-black dark:after:bg-white after:transition-transform peer-checked:after:translate-x-[20px]  ${
+          className={`relative z-10 block h-6 w-11 rounded-full border-2 border-white   after:absolute after:top-0.5 after:left-0.5 after:h-4 after:w-4 after:rounded-full after:bg-white  after:transition-transform peer-checked:after:translate-x-[20px]  ${
             isHomepage
               ? "border-white after:bg-white"
-              : "after:bg-black border-black"
+              : "after:bg-white border-white"
           }`}
         ></span>
 
@@ -102,7 +102,7 @@ export default function ThemeToggle() {
 
         <svg
           className={`absolute top-1 right-1 h-4 w-4 ${
-            isHomepage ? "stroke-white" : "stroke-black"
+            isHomepage ? "stroke-white" : "stroke-white"
           } `}
           viewBox="0 0 24 24"
           fill="none"
