@@ -32,7 +32,7 @@ export default function Logo() {
         width={200}
         height={200}
         alt="site-logo"
-        className="object-cover transition-all duration-300 ease-in-out"
+        className="object-cover w-2/3  transition-all duration-300 ease-in-out"
       />
       {/* <div className="w-5 h-5 rounded-full left-40 -top-2 opacity-60  bg-white absolute">
 

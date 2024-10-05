@@ -6,15 +6,20 @@ import CountQuantity from "./CountQuantity";
 import Rating from "./Rating";
 import { useCart } from "@/store/cart";
 import { usePathname } from "next/navigation";
-export default function CartItem({ product, fixed=false, flex=false }) {
- const pathname = usePathname()
+export default function CartItem({ product, fixed = false, flex = false }) {
+  const pathname = usePathname();
   const { removeFromCart, cartProducts } = useCart();
-  console.log(cartProducts)
+  console.log(cartProducts);
   // console.log(removeFromCart);
-  
+
   return (
-    <div key={product?.id} className={`flex ${fixed ? "w-[400px]" :""}  mb-5 relative justify-between items-center gap-4`}>
-      <img className="w-20 rounded h-20" src={product?.images[0]} alt="" />
+    <div
+      key={product?.id}
+      className={`flex ${
+        fixed ? "w-[400px]" : ""
+      }  mb-5 relative justify-between items-center gap-4`}
+    >
+      <img className="w-20 rounded h-20" src={product?.images[0].url} alt="" />
 
       <div className="flex flex-col gap-1 ">
         <Rating rating={4} />
@@ -23,12 +28,14 @@ export default function CartItem({ product, fixed=false, flex=false }) {
       </div>
       <CountQuantity product={product} />
       <button
-        className={`${!flex ? "absolute top-0 right-3"
-          :""
-        }`}
+        className={`${!flex ? "absolute top-0 right-3" : ""}`}
         onClick={() => removeFromCart(product.id)}
       >
-      <DeleteIcon className={`h-6 dark:hover:text-hero ${!flex ?"absolute  -top-3 right-1":" " } w-6  dark:bg-inherit dark:text-primary-p bg-white hover:text-hero transition-all duration-200`}  />
+        <DeleteIcon
+          className={`h-6 dark:hover:text-hero ${
+            !flex ? "absolute  -top-3 right-1" : " "
+          } w-6  dark:bg-[#262d34] dark:text-primary-p bg-white hover:text-hero transition-all duration-200`}
+        />
       </button>
     </div>
   );

@@ -1,8 +1,16 @@
 "use client";
-import { createCategory } from '@/data/categories';
-import { CloudUpload } from 'lucide-react';
-import Link from 'next/link';
-import React, { useState } from 'react';
+import { createCategory } from "@/data/categories";
+import { CloudUpload } from "lucide-react";
+import Link from "next/link";
+import React, { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+import { createBlogCategory } from "@/data/blogCategories";
 
 export default function AddCategory() {
   const [imagePreview, setImagePreview] = useState("");
@@ -12,6 +20,7 @@ export default function AddCategory() {
   const [slug, setSlug] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [forWhat, setForWhat] = useState("");
 
   const handleImageUpload = (e) => {
     setError("");
@@ -26,7 +35,7 @@ export default function AddCategory() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    if (!name || !slug || !description || !image) {
+    if (!name || !slug || !description || !image || !forWhat) {
       setError("All fields are required.");
       return;
     }
@@ -41,9 +50,17 @@ export default function AddCategory() {
     }
 
     try {
-      const res = await createCategory(formData);
+      let res;
+      if (forWhat === "blogs") {
+        res = await createBlogCategory(formData);
+      } else if (forWhat === "products") {
+        res = await createCategory(formData);
+      }
+
       if (res.error) {
-        setError(res.message || "An error occurred while creating the category.");
+        setError(
+          res.message || "An error occurred while creating the category."
+        );
       }
     } catch (error) {
       setError("Failed to create category. Please try again.");
@@ -53,8 +70,8 @@ export default function AddCategory() {
   }
 
   return (
-    <div className="flex items-start p-10 w-full gap-10">
-      <div className="w-1/2 bg-white sticky top-20 p-10 rounded">
+    <div className="flex lg:flex-row flex-col items-start p-10 w-full gap-10">
+      <div className="w-1/2 bg-white lg:sticky top-20 p-10 rounded">
         {imagePreview && (
           <div className="h-1/2">
             <img
@@ -69,7 +86,9 @@ export default function AddCategory() {
           <h1 className="text-xl mt-4 text-[#313b5e]">
             {name || "Category Name"}
           </h1>
-          <p className="text-sm mt-3">{description || "Category Description"}</p>
+          <p className="text-sm mt-3">
+            {description || "Category Description"}
+          </p>
 
           {error && <p className="text-red-500 mt-2">{error}</p>}
 
@@ -137,15 +156,28 @@ export default function AddCategory() {
                 />
               </div>
             </div>
-
-            <div className="flex flex-col mt-4">
-              <label htmlFor="description">Description</label>
-              <textarea
-                required
-                id="description"
-                onChange={(e) => setDescription(e.target.value)}
-                className="border outline-none p-2"
-              ></textarea>
+            <div className="flex items-start flex-col lg:flex-row md:flex-row gap-10">
+              <div className=" flex w-full flex-col mt-4">
+                <label htmlFor="description">For What</label>
+                <Select onValueChange={setForWhat}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="For What ?" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value={"products"}>Products</SelectItem>
+                    <SelectItem value={"blogs"}>Blogs</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex w-full flex-col mt-4">
+                <label htmlFor="description">Description</label>
+                <textarea
+                  required
+                  id="description"
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="border outline-none p-2"
+                ></textarea>
+              </div>
             </div>
           </form>
         </div>

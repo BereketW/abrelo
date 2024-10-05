@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import Blog from "./Blog";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { getManyBlog } from "@/data/blogs";
 export default function LatestNews() {
   const [news, setNews] = useState([])
   useEffect(()=>{
       async function getNews(){
-          const res = await fetch("https://saurav.tech/NewsAPI/top-headlines/category/entertainment/in.json")
-          const data = await res.json()
-          setNews(data.articles)
+          const res = await getManyBlog()
+          console.log("respones",res)
+          setNews(res.blogs)
           articles.length = 4
       }
       getNews()

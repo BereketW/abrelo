@@ -19,15 +19,9 @@ export default function CartPage() {
   return (
     <div className="lg:px-24 pb-12 dark:bg-[#262d34] bg-gray-100 md:px-16 sm:px-8 px-4">
       {/* <Header className=""/> */}
-      <div className="flex items-center justify-center mb-16">
-        <ul className="flex items-center gap-10 mt-24">
-          <li>Cart</li>
-          <li>Address</li>
-          <li>Payment</li>
-        </ul>
-      </div>
+
       <div className="lg:flex lg:px-24 justify-center gap-10">
-        <div className="lg:p-10 md:p-6 p-4 sm:mb-8 lg:w-2/3 bg-white dark:bg-inherit rounded  grid">
+        <div className="lg:p-10 md:p-6 p-4 sm:mb-8 lg:w-2/3 bg-white dark:bg-[#262d34] rounded  grid">
           <div className="flex items-center mb-12 justify-between">
             <h1 className="flex items-center gap-4">
               <span className="text-hero">
@@ -82,7 +76,9 @@ export default function CartPage() {
             </span>
           </div>
           <div className="flex justify-between items-center">
-            <p className="text-primary dark:text-white mt-4 text-xl font-medium">Total Amount</p>
+            <p className="text-primary dark:text-white mt-4 text-xl font-medium">
+              Total Amount
+            </p>
             <span>
               <CurrencyFormat amount={totalPrice - 100} />
             </span>

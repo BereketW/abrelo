@@ -15,7 +15,7 @@ export default function Pagination() {
           </div>
         </div>
 
-        <div className="">
+        <div className="px-4">
           <div className="flex text-sm border rounded-3xl">
             <button className="w-8  hover:text-white  rounded-l-full flex items-center border-inherit hover:bg-[#ff3d5430] transition-all duration-200 justify-center h-9">
               <ArrowLeft size={15} />

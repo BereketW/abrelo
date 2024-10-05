@@ -15,7 +15,7 @@ export default function Page() {
         <Header className="text-white  sticky top-0  lg:px-12 xl:px-24 dark:bg-inherit md:px-16 sm:px-8 px-4" />
         <PathInfo />
       </HeroWrapper>
-      <AboutBanner />
+      {/* <AboutBanner /> */}
       <About />
     </ThemeProvider>
   );

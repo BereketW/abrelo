@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
- @layer base {
+@layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -57,7 +57,7 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-} 
+}
 
 @layer base {
   * {
@@ -66,23 +66,129 @@
   body {
     @apply bg-background text-foreground;
   }
-} 
+}
 .bg-hero-gradient {
   @apply bg-hero;
-  background-image: radial-gradient(circle at 70% 50%, #fff9c3 11%, transparent 41%), radial-gradient(circle at 68% 50%, rgba(255, 250, 195, 0.1) 13%, transparent 52%);
+  background-image: radial-gradient(
+      circle at 70% 50%,
+      rgba(255, 249, 195, 0.6) 11%,
+      transparent 41%
+    ),
+    radial-gradient(
+      circle at 68% 50%,
+      rgba(255, 250, 195, 0.1) 13%,
+      transparent 52%
+    );
 }
-.poppins{
-  font-family: 'Poppins';
+
+.poppins {
+  font-family: "Poppins";
+}
+html {
+  font-family: Poppins;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.border-border {
+}
+.slick-next {
+  background-color: red;
+}
+
+.bg-img-gradient {
+  background-image: linear-gradient(
+      90deg,
+      rgba(34, 40, 46, 0.832) 0%,
+      rgba(34, 40, 46, 0.682) 52%,
+      rgba(34, 40, 46, 0.692) 99%
+    ),
+    url("/assets/channel-banner.jpg");
+}
+.shop-bg-gradient {
+  .bg-hero-gradient {
+    background-image: linear-gradient(
+      90deg,
+      rgba(34, 40, 46, 0.832) 0%,
+      rgba(34, 40, 46, 0.682) 52%,
+      rgba(34, 40, 46, 0.692) 99%
+    );
   }
-  html{
-    font-family: Poppins;
+}
+.bg-blog {
+  background-image: linear-gradient(
+      90deg,
+      rgba(34, 40, 46, 0.832) 0%,
+      rgba(34, 40, 46, 0.682) 52%,
+      rgba(34, 40, 46, 0.692) 99%
+    ),
+    url("/assets/hero.jpg");
+}
+@media (max-width: 768px) {
+  .bg-hero-gradient {
+    background-image: linear-gradient(
+        90deg,
+        rgba(34, 40, 46, 0.832) 0%,
+        rgba(34, 40, 46, 0.682) 52%,
+        rgba(34, 40, 46, 0.692) 99%
+      ),
+      url("/assets/abrish-new.jpg");
   }
-  ::-webkit-scrollbar{
+  .dark {
+    .bg-hero-gradient {
+      background-image: linear-gradient(
+          90deg,
+          rgba(34, 40, 46, 0.832) 0%,
+          rgba(34, 40, 46, 0.682) 52%,
+          rgba(34, 40, 46, 0.692) 99%
+        ),
+        url("/assets/abrish-new.jpg");
+    }
+  }
+}
+@media (max-width: 1240px) {
+  .button-hide {
     display: none;
   }
-  .border-border{
-    
+  .button-show {
+    display: block;
   }
-  .slick-next{
-    background-color: red;
+  .hide-sidebar {
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+
+    top: 0;
+    left: 0;
+    z-index: 100;
+    /* transform: translateX(-100%); */
   }
+  .full {
+    display: block;
+    /* position:absolute;
+      inset: 0; */
+  }
+  .page-full {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    top: 0;
+
+    /* z-index: 56; */
+    overflow: scroll;
+  }
+  .hide {
+    transform: translateX(-100%);
+    transition: all 0.2s ease-in-out;
+    display: none;
+    width: 0;
+    overflow: hidden;
+  }
+  .show {
+    transition: all 0.2s ease-in-out;
+
+    transform: translateX(0);
+    display: block;
+    width: full;
+    overflow: show;
+  }
+}

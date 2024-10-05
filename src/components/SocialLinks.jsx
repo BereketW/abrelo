@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 export default function SocialLinks({className, footer=false}){
 	return(
-	<div className={`${className} `}>
+	<div className={`${className}  `}>
         <Link href={"https://www.instagram.com/abrelohd/"} className="hover:scale-110 hover:shadow-md transition-transform duration-200" target="blank">
           <BsInstagram  className={!footer && "lg:scale-[2.3] xl:scale-[2.6] z-50  md:scale-[2]:sm:scale=[1.6] scale-[1.3]"} />
         </Link>

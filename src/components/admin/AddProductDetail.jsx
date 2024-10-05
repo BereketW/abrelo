@@ -14,7 +14,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function AddProductDetail() {
+export default function AddProductDetail({ categories }) {
+  // console.log(categories)
   const [imagePreviews, setImagePreviews] = useState([]);
   const [images, setImages] = useState([]);
   const [brandName, setBrandName] = useState("");
@@ -27,7 +28,7 @@ export default function AddProductDetail() {
   const [quantity, setQuantity] = useState(1);
   const [discount, setDiscount] = useState(0);
   const [stockStatus, setStockStatus] = useState();
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const [error, setError] = useState("");
 
   // Multi-select state for sizes and colors
@@ -44,28 +45,16 @@ export default function AddProductDetail() {
     "#323a46",
   ];
 
-  useEffect(() => {
-    async function fetchCategories() {
-
-        const fetchedCategories = await getManyCategories();
-        console.log("Fetched Categories:", fetchedCategories); // Check if you're receiving the correct data
-        setCategories([...fetchedCategories]);
-    }
-
-    fetchCategories();
-  }, []);
-
   const handleImageUpload = (e) => {
     setError("");
     const files = Array.from(e.target.files);
 
-    if (files.length + images.length > 4) {
-      setError("You can only upload a maximum of 4 images.");
-      return;
-    }
-
     files.forEach((file) => {
-      if (!["image/jpeg", "image/png", "image/gif"].includes(file.type)) {
+      if (
+        !["image/jpeg", "image/png", "image/gif", "image/avif"].includes(
+          file.type
+        )
+      ) {
         setError("Only JPG, PNG, and GIF formats are allowed.");
         return;
       }
@@ -82,7 +71,6 @@ export default function AddProductDetail() {
       prevPreviews.filter((_, i) => i !== index)
     );
   };
-  
 
   const toggleItem = (item, setSelected, selectedList) => {
     if (selectedList.includes(item)) {
@@ -94,6 +82,7 @@ export default function AddProductDetail() {
 
   async function onSubmit(e) {
     e.preventDefault();
+    setError("");
     if (images.length < 4) {
       setError("Please upload at least 4 images.");
       return;
@@ -111,6 +100,7 @@ export default function AddProductDetail() {
     formData.append("sizes", selectedSizes.join(", "));
     formData.append("colors", selectedColors.join(", "));
     formData.append("brandName", brandName);
+    formData.append("discount", discount);
 
     images.forEach((image) => {
       formData.append("images", image);
@@ -128,15 +118,12 @@ export default function AddProductDetail() {
     }
   }
 
- 
-
-  
   const isSubmitDisabled = images.length < 4;
   const finalPrice = price - (price * discount) / 100;
 
   return (
-    <section className="flex items-start p-10 w-full gap-10">
-      <div className="w-1/2 bg-white sticky top-20 p-10 rounded">
+    <section className="flex lg:flex-row flex-col items-start p-10 w-full gap-10">
+      <div className="lg:w-1/2 w-full  bg-white lg:sticky top-20 p-10 rounded">
         {images.length > 0 && (
           <div className="h-1/2">
             <img
@@ -167,10 +154,7 @@ export default function AddProductDetail() {
           ))}
         </div>
         <div>
-          <h1 className="text-xl mt-4 text-[#313b5e]">
-            {name}
-            <span>{categories}</span>
-          </h1>
+          <h1 className="text-xl mt-4 text-[#313b5e]">{name}</h1>
           <h1 className="text-lg flex flex-col mt-4  text-[##313b5e]">
             Price:{" "}
             <span className="flex font-medium gap-4">
@@ -191,9 +175,9 @@ export default function AddProductDetail() {
               ))}
             </span>
           </h1>
-          <h1 className="text-lg flex flex-col mt-4  text-[##313b5e]">
+          <h1 className="text-lg flex flex-col mt-4  text-[#313b5e]">
             Colors:{" "}
-            <span className="flex flex-wrap font-medium gap-4">
+            <span className="flex w-full flex-wrap font-medium gap-2 lg:gap-4">
               {selectedColors.map((color) => (
                 <div
                   key={color}
@@ -248,26 +232,23 @@ export default function AddProductDetail() {
                 </div>
                 <div className="flex flex-col w-1/2">
                   <label>Product Categories</label>
-                  <Select>
+                  <Select onValueChange={setCategorySlug}>
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Categories" />
                     </SelectTrigger>
                     <SelectContent>
-                     
-                          <SelectItem  value="Electronics">
-                           Electronics
-                          </SelectItem>
-                          <SelectItem  value="Clothes">
-                           Clothes
-                          </SelectItem>
-                     
+                      {categories.map((categ) => (
+                        <SelectItem key={categ.id} value={categ.slug}>
+                          {categ.name}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>
               </div>
 
-              <div className="flex mt-4 gap-10 items-center justify-between">
-                <div className="flex flex-col w-1/3">
+              <div className="flex mt-4 gap-10 items-center flex-wrap justify-between">
+                <div className="flex flex-col lg:w-1/3 md:w-1/2">
                   <label>Brand Name</label>
                   <input
                     type="text"
@@ -276,7 +257,7 @@ export default function AddProductDetail() {
                     placeholder="Brand Name"
                   />
                 </div>
-                <div className="flex flex-col w-1/3">
+                <div className="flex flex-col lg:w-1/3 md:w-1/2">
                   <label>Weight</label>
                   <input
                     type="text"
@@ -285,30 +266,21 @@ export default function AddProductDetail() {
                     onChange={(e) => setWeight(e.target.value)}
                   />
                 </div>
-                <div className="flex flex-col w-1/3">
+                <div className="flex flex-col lg:w-1/3 md:w-1/2">
                   <label>Stock Status</label>
-                  <Select>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Stock Status" />
-                    </SelectTrigger>
-                    <SelectContent>
-                     
-                          <SelectItem  value="In Stock">
-                           In Stock
-                          </SelectItem>
-                          <SelectItem  value="Out of Stock">
-                           Out of Stock
-                          </SelectItem>
-                     
-                    </SelectContent>
-                  </Select>
+                  <input
+                    type="number"
+                    className="px-4 py-2 border rounded"
+                    placeholder="Quantity"
+                    onChange={(e) => setStockStatus(e.target.value)}
+                  />
                 </div>
               </div>
 
-              <div className="mt-4 flex justify-between w-full">
-                <div className="w-1/2">
+              <div className="mt-4 flex border border-hero flex-wrap justify-between w-full">
+                <div className="flex-1">
                   <p>Size:</p>
-                  <div className="flex gap-2 w-4/5 flex-wrap">
+                  <div className="flex gap-2 flex-wrap">
                     {sizes.map((size) => (
                       <label
                         key={size}
@@ -332,9 +304,9 @@ export default function AddProductDetail() {
                   </div>
                 </div>
 
-                <div>
+                <div className="flex-1">
                   <p>Color:</p>
-                  <div className="flex gap-2 w-4/5 flex-wrap">
+                  <div className="flex gap-2 flex-wrap">
                     {colors.map((color) => (
                       <label
                         key={color}
@@ -408,6 +380,7 @@ export default function AddProductDetail() {
                 </div>
               </div>
             </div>
+            {error && <div className="text-hero text-sm">{error}</div>}
             <div className="flex gap-10 p-4 items-center">
               <div className="my-8">
                 <input

@@ -5,7 +5,10 @@ import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 import GetPathname from "@/scripts/pathname";
 
-const poppins = Poppins({ weight: ['400', '500', '600', '700', '800'], subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "Abrelo HD",
@@ -13,17 +16,17 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const pathname =  <GetPathname path={"/admin"}/> 
-  const isAdminPage = JSON.stringify(pathname.props.path) === "/admin"
+  const pathname = <GetPathname path={"/admin"} />;
+  const isAdminPage = JSON.stringify(pathname.props.path) === "/admin";
 
   return (
     <html className="scroll-smooth">
-      <body className={poppins.className} >
+      <body className={poppins.className}>
         <ToastContainer />
-       
+
         {/* Client Component */}
-        <div className="dark:bg-[#22282e]">{children}</div>
-         <VideoOfTheMonth />
+        <div className="">{children}</div>
+        <VideoOfTheMonth />
         <Footer />
       </body>
     </html>

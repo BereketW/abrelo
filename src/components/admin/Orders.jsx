@@ -10,17 +10,17 @@ export default function Orders() {
         <div className="p-6 mb-3 rounded bg-white">
           <div className="flex items-center justify-between">
             <h4 className="card-title">Recent Orders</h4>
-            <Link
+            {/* <Link
               href="#!"
               className="text-sm p-2  text-hero rounded bg-opacity-35 bg-[#ff3d5430]"
             >
               <button>+ Create Order</button>
-            </Link>
+            </Link> */}
           </div>
         </div>
 
-        <div className="table-responsive table-centered">
-          <table className="table text-sm w-full mb-0">
+        <div className="table-responsive w-full overflow-scroll table-centered">
+          <table className="table text-sm w-full  mb-0">
             <thead className="bg-light text-[#5d7186] text-sm bg-opacity-50">
               <tr className="p-2">
                 <th className="p-2">Order ID.</th>
@@ -129,12 +129,8 @@ export default function Orders() {
           </table>
         </div>
 
-        
-
-            <Pagination />
-          </div>
-        </div>
-      
-    
+        <Pagination />
+      </div>
+    </div>
   );
 }

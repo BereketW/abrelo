@@ -31,8 +31,9 @@ module.exports = {
   			'channel-dark': 'rgb(41 41 61 / 1)'
   		},
   		backgroundImage: {
-  			'medium': 'url("/assets/abrelo-reacting.png")',
-  			'hero-img': ' radial-gradient(circle at 70% 50%, #fff9c3 11%, transparent 41%), radial-gradient(circle at 68% 50%, rgba(255, 250, 195, .1) 13%, transparent 52%)'
+  			'medium': 'linear-gradient(120deg, rgba(255,61,84,1) 31%, rgba(255,61,84,0.78442227232689951) 32%),url("/assets/abrish-new.jpg")',
+  			'hero-img': ' radial-gradient(circle at 70% 50%, #fff9c3 11%, transparent 41%), radial-gradient(circle at 68% 50%, rgba(255, 250, 195, .1) 13%, transparent 52%)',
+        // 'hero-gradient': 'radial-gradient(circle at 70% 50%, #fff9c3 11%, transparent 41%), radial-gradient(circle at 68% 50%, rgba(255, 250, 195, 0.1) 13%, transparent 52%), rgb(255, 61, 84)'
   		},
   		colors: {
         "light-rgb":"rgb(47, 57, 67 / 1)",

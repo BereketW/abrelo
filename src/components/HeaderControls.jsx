@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 import { useCart } from "@/store/cart";
 import { useTheme } from "next-themes";
 import { MenuIcon } from "lucide-react";
-import { BsCart, BsCart2, BsCartFill, BsPerson } from "react-icons/bs";
+import { BsCart, BsCart2, BsCart3, BsCart4, BsCartFill, BsCartX, BsPerson, BsPersonBadge, BsPersonFill, BsPersonHeart } from "react-icons/bs";
 import { RiProfileFill } from "react-icons/ri";
 import ThemeToggle from "./ThemeToggle";
 export default function HeaderControls({ display, setDisplay, setHidden }) {
@@ -43,7 +43,7 @@ export default function HeaderControls({ display, setDisplay, setHidden }) {
       <ThemeToggle />
       <div className="flex items-center">
         <Link className="block  xl:px-3" href="/profile">
-          <BsPerson size={30} />
+          <BsPerson className="sm:text-2xl lg:text-3xl md:text-2xl text-2xl" />
         </Link>
       </div>
 
@@ -58,16 +58,16 @@ export default function HeaderControls({ display, setDisplay, setHidden }) {
          {cartProducts.length && <span
             className={`${
               
-                 "text-white bg-hero "
+                 "text-white bg-inherit "
                 
             }  ${
               cartProducts.length === 0 ? "hidden top-0 right-0" : ""
-            } text-sm dark:bg-[#262d34]  absolute -top-1  -right-3 font-bold p-2 flex items-center justify-center  rounded-full h-2 w-2`}
+            } text-sm absolute -top-1  -right-3 font-bold p-2 flex items-center justify-center  rounded-full h-2 w-2`}
           >
             {cartProducts.length}
           </span>}
 
-          <BsCart2 size={28} />
+          <BsCartX className="sm:text-2xl lg:text-3xl md:text-2xl text-2xl" />
         </Link>
       </div>
       <button

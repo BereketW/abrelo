@@ -55,12 +55,12 @@ const products = [
 export default function ProductsList() {
   return (
     <div>
-      <div className="p-6 mb-3 rounded bg-white">
+      <div className="p-6 mb-3 w-full  rounded bg-white">
         <div className="flex items-center justify-between">
           <h4 className="card-title">Recent Products</h4>
           <div className="flex item gap-2">
             <Link
-              href="#!"
+              href="/admin/addProduct"
               className="text-sm p-2  text-white rounded bg-opacity-35 bg-hero"
             >
               <button>+ Add Product</button>
@@ -69,79 +69,85 @@ export default function ProductsList() {
               <button className="p-2 rounded bg-gray-200 flex items-center gap-1 text-sm">
                 File <ChevronDown size={15} />
               </button>
-              
             </div>
           </div>
         </div>
       </div>
-      <table className="w-full">
-        <thead>
-          <tr className="border-b bg-white text-[#5d7186]">
-            <th className=" p-4 text-left">Product & Size</th>
-            <th className=" p-4 text-left">Price</th>
-            <th className=" p-4 text-left">Stock</th>
-            <th className=" p-4 text-left">Category</th>
-            <th className=" p-4 text-left">Rating</th>
-            <th className=" p-4 text-left">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product, index) => (
-            <tr key={index} className="border-b bg-white">
-              <td className="flex gap-2">
-                <img
-                  src={
-                    "https://techzaa.getappui.com/larkon/admin/assets/images/product/p-1.png"
-                  }
-                  width={50}
-                  height={50}
-                  alt={product.name}
-                />
-                <span>
-                  <h1>{product.name}</h1>
-                  <h2 className="text-[#8686a7] text-sm">
-                    Size: {product.sizes}
-                  </h2>
-                </span>
-              </td>
-              <td className="text-[#8686a7] text-sm">{product.price}</td>
-              <td className="text-sm">{product.stock.split(',')[0]}<span className="text-[#8686a7]">{product.stock.split(",")[1]}</span></td>
-              <td className="text-[#8686a7] text-sm">{product.category}</td>
-              <td className="gap-1 justify-center items-center text-[#8686a7] text-sm">
-                <span className="bg-[#8686a7] mr-2 px-2 py-1 text-white inline rounded">
-                  <Star
-                    size={15}
-                    className="inline"
-                    fill="yellow"
-                    color="yellow"
-                  />{" "}
-                  {product.rating}
-                </span>
-                {product.reviews} Reviews
-              </td>
-              <td>
-                <div className="flex items-center gap-3">
-                  <Link href={"#"} className="p-1 bg-[#8686a7] rounded">
-                    <EyeIcon color="white" />
-                  </Link>
-                  <Link
-                    href={"#"}
-                    className="p-1 rounded group hover:bg-[#ff6c2f] transition-colors duration-200 bg-[#ff3d5430]"
-                  >
-                    <Edit className="text-[#ff6c2f] group-hover:text-white" />
-                  </Link>
-                  <Link
-                    href={"#"}
-                    className="p-1 rounded group hover:bg-hero transition-colors duration-200 bg-[#ff3d5430]"
-                  >
-                    <DeleteIcon className="text-hero group-hover:text-white" />
-                  </Link>
-                </div>
-              </td>
+      <div className="overflow-scroll">
+        <table className="w-full ">
+          <thead>
+            <tr className="border-b bg-white text-[#5d7186]">
+              <th className=" p-4 text-left">Product & Size</th>
+              <th className=" p-4 text-left">Price</th>
+              <th className=" p-4 text-left">Stock</th>
+              <th className=" p-4 text-left">Category</th>
+              <th className=" p-4 text-left">Rating</th>
+              <th className=" p-4 text-left">Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {products.map((product, index) => (
+              <tr key={index} className="border-b bg-white">
+                <td className="flex gap-2">
+                  <img
+                    src={
+                      "https://techzaa.getappui.com/larkon/admin/assets/images/product/p-1.png"
+                    }
+                    width={50}
+                    height={50}
+                    alt={product.name}
+                  />
+                  <span>
+                    <h1>{product.name}</h1>
+                    <h2 className="text-[#8686a7] text-sm">
+                      Size: {product.sizes}
+                    </h2>
+                  </span>
+                </td>
+                <td className="text-[#8686a7] text-sm">{product.price}</td>
+                <td className="text-sm">
+                  {product.stock.split(",")[0]}
+                  <span className="text-[#8686a7]">
+                    {product.stock.split(",")[1]}
+                  </span>
+                </td>
+                <td className="text-[#8686a7] text-sm">{product.category}</td>
+                <td className="gap-1 justify-center items-center text-[#8686a7] text-sm">
+                  <span className="bg-[#8686a7] mr-2 px-2 py-1 text-white inline rounded">
+                    <Star
+                      size={15}
+                      className="inline"
+                      fill="yellow"
+                      color="yellow"
+                    />{" "}
+                    {product.rating}
+                  </span>
+                  {product.reviews} Reviews
+                </td>
+                <td>
+                  <div className="flex items-center gap-3">
+                    <Link href={"#"} className="p-1 bg-[#8686a7] rounded">
+                      <EyeIcon color="white" />
+                    </Link>
+                    <Link
+                      href={"#"}
+                      className="p-1 rounded group hover:bg-[#ff6c2f] transition-colors duration-200 bg-[#ff3d5430]"
+                    >
+                      <Edit className="text-[#ff6c2f] group-hover:text-white" />
+                    </Link>
+                    <Link
+                      href={"#"}
+                      className="p-1 rounded group hover:bg-hero transition-colors duration-200 bg-[#ff3d5430]"
+                    >
+                      <DeleteIcon className="text-hero group-hover:text-white" />
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <Pagination />
     </div>
   );

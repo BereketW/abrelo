@@ -87,15 +87,23 @@ export default function Videos({ left = true, dark }) {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
+          
+        },
+      },
+      {
+        breakpoint: 1100,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          initialSlide: 0,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 0,
         },
       },
       {
@@ -165,9 +173,9 @@ export default function Videos({ left = true, dark }) {
     <div className="lg:ml-24 md:ml-16 sm:ml-8 p-4 relative -top-10 bg-white dark:bg-[#262d34]">
       <Slider {...settings} >
         {videos.map((video) => (
-          <div key={video.id.videoId} className="lg:p-4 lg:pl-12 md:pl-8 sm:pl-4   z-50">
+          <div key={video.id.videoId} className="lg:p-4 lg:pl-12 md:pl-8 sm:pl-4  z-50">
             <iframe
-              className="lg:w-auto md:w-auto w-[450px]"
+              className="lg:w-auto md:w-full sm:w-[300px] w-full"
               src={`https://www.youtube.com/embed/${video.id.videoId}?mute=1`}
             ></iframe>
             <h2 className="my-4">{video.snippet.title}</h2>
